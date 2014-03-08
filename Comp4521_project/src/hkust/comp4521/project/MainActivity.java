@@ -12,26 +12,32 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
 	private TextView statusBar = null;
 	private EditText emailInput = null;
+	private Button btnLogin = null;
 	private EditText passwordInput = null;
+	private Toast toast = null;
 	private Handler handler = new Handler();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		this.statusBar = (TextView) this.findViewById(R.id.textView3);
-		this.emailInput = (EditText) this.findViewById(R.id.editText1);
-		this.passwordInput = (EditText) this.findViewById(R.id.editText2);
+		emailInput = (EditText) this.findViewById(R.id.myUsername);
+		passwordInput = (EditText) this.findViewById(R.id.myPassword);
+		
+		 toast = Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT);
+		 toast.show();
 		
 		// bind events
 		final MainActivity that = this;
-		Button btnLogin = (Button) this.findViewById(R.id.button1);
+		btnLogin = (Button) this.findViewById(R.id.loginBut);
 		btnLogin.setOnClickListener(new OnClickListener()
 		{
 
@@ -61,11 +67,13 @@ public class MainActivity extends Activity
 				that.handler.post(new Runnable() {
 					public void run() {
 						if(d == null) {
-							that.statusBar.setText("login failed");
+							toast.setText("login failed");
+							toast.show();
 							return;
 						}
 						User user = (User) d;
-						that.statusBar.setText("Welcome, "+user.email);				
+						toast.setText("Welcome, "+user.email);
+						toast.show();		
 					}
 					
 				});
