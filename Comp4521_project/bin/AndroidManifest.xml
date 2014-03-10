@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11" 
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,7 +26,24 @@
         </activity>
         <activity
             android:name="hkust.comp4521.project.WholePage"
-            android:label="@string/title_activity_whole_page" >
+            android:label="@string/title_activity_whole_page"
+            android:parentActivityName="hkust.comp4521.project.MainActivity" >
+        </activity>
+        <activity
+            android:name="hkust.comp4521.project.NewActivity"
+            android:label="@string/title_activity_new" >
+        </activity>
+        <activity
+            android:name="hkust.comp4521.project.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="hkust.comp4521.project.InterestingActivity"
+            android:label="@string/title_activity_interesting" >
+        </activity>
+        <activity
+            android:name="hkust.comp4521.project.CurrentActivity"
+            android:label="@string/title_activity_current" >
         </activity>
     </application>
 
