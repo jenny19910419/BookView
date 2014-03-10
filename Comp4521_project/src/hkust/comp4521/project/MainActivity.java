@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
-	private TextView statusBar = null;
+
 	private EditText emailInput = null;
 	private Button btnLogin = null;
 	private EditText passwordInput = null;
@@ -32,7 +32,7 @@ public class MainActivity extends Activity
 		emailInput = (EditText) this.findViewById(R.id.myUsername);
 		passwordInput = (EditText) this.findViewById(R.id.myPassword);
 		
-		 toast = Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT);
+		 toast = Toast.makeText(this, "Welcome", Toast.LENGTH_LONG);
 		 toast.show();
 		
 		// bind events
@@ -58,7 +58,7 @@ public class MainActivity extends Activity
 	}
     
 	public void login() {
-		this.statusBar.setText("logging in");
+	
 		final MainActivity that = this;
 		User.server_login(this.emailInput.getText().toString(), this.passwordInput.getText().toString(), new Callable()
 		{
@@ -67,13 +67,17 @@ public class MainActivity extends Activity
 				that.handler.post(new Runnable() {
 					public void run() {
 						if(d == null) {
-							toast.setText("login failed");
-							toast.show();
+							if(toast!=null ) {
+								toast.setText("login failed");
+								toast.show();
+								}
 							return;
 						}
 						User user = (User) d;
-						toast.setText("Welcome, "+user.email);
-						toast.show();		
+						if(toast!=null) {
+							toast.setText("Welcome, "+user.email);
+							toast.show();	
+						}
 					}
 					
 				});

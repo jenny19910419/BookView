@@ -17,7 +17,7 @@ import android.util.Log;
 
 public class Server
 {
-	private static String SERVER_URL = "http://node.citethrough.com:8080/";
+	private static String SERVER_URL = "http://node.citethrough.com:18080/";
 
 	public static void post(final String path, final String[] args, final Callable callback) {
 		Thread thread = new Thread(new Runnable(){
