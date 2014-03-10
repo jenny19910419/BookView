@@ -5,6 +5,7 @@ import Data.User;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -36,14 +37,13 @@ public class MainActivity extends Activity
 		 toast.show();
 		
 		// bind events
-		final MainActivity that = this;
 		btnLogin = (Button) this.findViewById(R.id.loginBut);
 		btnLogin.setOnClickListener(new OnClickListener()
 		{
 
 			@Override
 			public void onClick(View v) {
-				that.login();
+				login();
 
 			}
 
@@ -59,12 +59,11 @@ public class MainActivity extends Activity
     
 	public void login() {
 	
-		final MainActivity that = this;
 		User.server_login(this.emailInput.getText().toString(), this.passwordInput.getText().toString(), new Callable()
 		{
 			@Override
 			public void callback(final Object d) {
-				that.handler.post(new Runnable() {
+				handler.post(new Runnable() {
 					public void run() {
 						if(d == null) {
 							if(toast!=null ) {
@@ -77,10 +76,15 @@ public class MainActivity extends Activity
 						if(toast!=null) {
 							toast.setText("Welcome, "+user.email);
 							toast.show();	
+							
+							//go to WholePage
+							Intent intent = new Intent(MainActivity.this, WholePage.class);
+							startActivity(intent);
 						}
 					}
 					
 				});
+				
 				
 			}
 
