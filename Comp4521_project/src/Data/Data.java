@@ -13,7 +13,12 @@ public class Data
 {
 	protected String _thisPtr = "";
 	private static String PACKAGE_PATH = "Data";
-
+	
+	/**
+	 * construct a Data Object from a JSON returned by server.
+	 * @param jObject the JSON returned by server
+	 * @return the parsed Data object. returns null if parsing fails.
+	 */
 	public static Data from_json(JSONObject jObject) {
 		final String TAG = "Data.from_json";
 		String className = "";
@@ -121,5 +126,12 @@ public class Data
 		} else {
 			return null;
 		}
+	}
+	/**
+	 * get the pointer of the data. the pointer is used in server communication.
+	 * @return pointer of the data
+	 */
+	public String get_ptr() {
+		return this._thisPtr;
 	}
 }
