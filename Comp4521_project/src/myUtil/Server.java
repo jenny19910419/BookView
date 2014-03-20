@@ -110,6 +110,14 @@ public class Server
 			
 			return null;
 		}
+		if(rtn.has("error")) {
+			try {
+				Log.d(TAG, "server responses an error: " + rtn.getString("error"));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 		return rtn;
 	}
 	

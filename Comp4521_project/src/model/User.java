@@ -1,4 +1,4 @@
-package Data;
+package model;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,10 +11,10 @@ import myUtil.Server;
 
 public class User extends Data
 {
-	public static String TAG = "User";
+	public static final String TAG = "User";
 	public String email = "";
 	
-	private static User currUser = null;
+	private static User activeUser = null;
 	/**
 	 * perform a login action
 	 * @param email the email of the user
@@ -34,7 +34,7 @@ public class User extends Data
 				}
 				else {
 					User user = (User)Data.from_json((JSONObject)d);
-					User.currUser = user;
+					User.activeUser = user;
 					callback.callback(user);
 				}
 				
@@ -104,5 +104,28 @@ public class User extends Data
 			}
 			
 		});
+	}
+	
+	public static void server_add_following(String userPtr, final Callable callback) {
+		Server.post("User/add_following", new String[]{}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				if(d == null) {
+					Log.d(TAG, "add_following fails");
+					callback.callback(null);
+				}
+				
+				callback.callback(Data.from_json((JSONObject) d));
+			}
+			
+		});
+	}
+	/**
+	 * get the current active user
+	 * @return active user
+	 */
+	public static User get_active_user() {
+		return User.activeUser;
 	}
 }

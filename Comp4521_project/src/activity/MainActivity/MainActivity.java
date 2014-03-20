@@ -1,7 +1,15 @@
-package hkust.comp4521.project;
+package activity.MainActivity;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import hkust.comp4521.project.R;
+import hkust.comp4521.project.WholePage;
+import hkust.comp4521.project.R.id;
+import hkust.comp4521.project.R.layout;
+import hkust.comp4521.project.R.menu;
+import model.User;
 import myUtil.*;
-import Data.User;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
@@ -15,15 +23,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity
+public class MainActivity extends MainActivityController implements Observer
 {
 
 	private EditText emailInput = null;
 	private Button btnLogin = null;
 	private EditText passwordInput = null;
-	private Toast toast = null;
-	private Handler handler = new Handler();
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +38,6 @@ public class MainActivity extends Activity
 		emailInput = (EditText) this.findViewById(R.id.myUsername);
 		passwordInput = (EditText) this.findViewById(R.id.myPassword);
 		
-		 toast = Toast.makeText(this, "Welcome", Toast.LENGTH_LONG);
-		 toast.show();
 		
 		// bind events
 		btnLogin = (Button) this.findViewById(R.id.loginBut);
@@ -58,37 +61,21 @@ public class MainActivity extends Activity
 	}
     
 	public void login() {
-	
-		User.server_login(this.emailInput.getText().toString(), this.passwordInput.getText().toString(), new Callable()
-		{
-			@Override
-			public void callback(final Object d) {
-				handler.post(new Runnable() {
-					public void run() {
-						if(d == null) {
-							if(toast!=null ) {
-								toast.setText("login failed");
-								toast.show();
-								}
-							return;
-						}
-						User user = (User) d;
-						if(toast!=null) {
-							toast.setText("Welcome, "+user.email);
-							toast.show();	
-							
-							//go to WholePage
-							Intent intent = new Intent(MainActivity.this, WholePage.class);
-							startActivity(intent);
-						}
-					}
-					
-				});
-				
-				
-			}
+		this.login(this.emailInput.getText().toString(), this.passwordInput.getText().toString());
+		
+	}
 
-		});
+	@Override
+	public void update(Observable observable, Object data) {
+		switch((Integer) data) {
+		case MainActivityController.STATE_LOGIN_SUCCESS:
+			Toast.makeText(this, "Welcome, " + User.get_active_user().email, Toast.LENGTH_SHORT).show();
+			break;
+		case MainActivityController.STATE_LOGIN_FAIL:
+			Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
+			break;
+		}
+		
 	}
 
 }
