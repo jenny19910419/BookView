@@ -27,6 +27,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity implements Observer
 {
 
+	
 	private EditText emailInput = null;
 	private Button btnLogin = null;
 	private EditText passwordInput = null;
