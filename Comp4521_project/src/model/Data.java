@@ -12,7 +12,7 @@ import android.util.Log;
 public class Data
 {
 	protected String _thisPtr = "";
-	private static String PACKAGE_PATH = "Data";
+	private static String PACKAGE_PATH = "model";
 	
 	/**
 	 * construct a Data Object from a JSON returned by server.
