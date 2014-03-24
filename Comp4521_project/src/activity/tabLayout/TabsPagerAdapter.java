@@ -1,6 +1,9 @@
 package activity.tabLayout;
 
 import activity.bookview.BookView;
+import activity.fresh.FreshPage;
+import activity.home.HomePage;
+import activity.popular.PopPage;
 import activity.search.Search;
 import activity.social.Social;
 import android.support.v4.app.Fragment;
@@ -19,11 +22,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
  
         switch (index) {
         case 0:
-            return new BookView();
+            return new FreshPage();
         case 1:
-            return new Social();
+            return new HomePage();
         case 2:
-            return new Search();
+            return new PopPage();
         }
  
         return null;

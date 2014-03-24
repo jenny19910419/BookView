@@ -35,22 +35,7 @@
             android:label="@string/title_activity_whole_page"
             android:parentActivityName="activity.MainActivity.MainActivity" >
         </activity>
-        <activity
-            android:name="hkust.comp4521.project.NewActivity"
-            android:label="@string/title_activity_new" >
-        </activity>
-        <activity
-            android:name="hkust.comp4521.project.HomeActivity"
-            android:label="@string/title_activity_home" >
-        </activity>
-        <activity
-            android:name="hkust.comp4521.project.InterestingActivity"
-            android:label="@string/title_activity_interesting" >
-        </activity>
-        <activity
-            android:name="hkust.comp4521.project.CurrentActivity"
-            android:label="@string/title_activity_current" >
-        </activity>
+       
     </application>
 
 </manifest>

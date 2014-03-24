@@ -38,12 +38,12 @@ public final class R {
         public static final int pager=0x7f080006;
     }
     public static final class layout {
-        public static final int activity_current=0x7f030000;
-        public static final int activity_home=0x7f030001;
-        public static final int activity_interesting=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int activity_whole_page=0x7f030004;
-        public static final int fragment_bookview=0x7f030005;
+        public static final int activity_main=0x7f030000;
+        public static final int activity_whole_page=0x7f030001;
+        public static final int fragment_bookview=0x7f030002;
+        public static final int fragment_freshpage=0x7f030003;
+        public static final int fragment_homepage=0x7f030004;
+        public static final int fragment_poppage=0x7f030005;
         public static final int fragment_search=0x7f030006;
         public static final int fragment_social=0x7f030007;
         public static final int tab_layout=0x7f030008;
