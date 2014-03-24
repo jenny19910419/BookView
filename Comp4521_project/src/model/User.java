@@ -105,9 +105,13 @@ public class User extends Data
 			
 		});
 	}
-	
+	/**
+	 * let the active user follow another user
+	 * @param userPtr the target user pointer
+	 * @param callback 
+	 */
 	public static void server_add_following(String userPtr, final Callable callback) {
-		Server.post("User/add_following", new String[]{}, new Callable() {
+		Server.post("User/add_following", new String[]{userPtr}, new Callable() {
 
 			@Override
 			public void callback(Object d) {
