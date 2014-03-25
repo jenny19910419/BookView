@@ -9,6 +9,7 @@ import activity.social.Social;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.widget.Toast;
  
 public class TabsPagerAdapter extends FragmentPagerAdapter {
  

@@ -46,7 +46,8 @@ public final class R {
         public static final int fragment_poppage=0x7f030005;
         public static final int fragment_search=0x7f030006;
         public static final int fragment_social=0x7f030007;
-        public static final int tab_layout=0x7f030008;
+        public static final int searchable=0x7f030008;
+        public static final int tab_layout=0x7f030009;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -60,6 +61,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
         public static final int password=0x7f050004;
+        public static final int search_hint=0x7f05000d;
         public static final int title_activity_current=0x7f05000c;
         public static final int title_activity_home=0x7f05000a;
         public static final int title_activity_interesting=0x7f05000b;

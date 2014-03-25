@@ -8,12 +8,18 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class TabLayout extends FragmentActivity implements ActionBar.TabListener
@@ -30,21 +36,29 @@ public class TabLayout extends FragmentActivity implements ActionBar.TabListener
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.whole_page, menu);
 		
-		 MenuItem menuItem = menu.findItem(R.id.action_search);
+		 MenuItem menuItem = menu.findItem(R.id.action_circle);
+		 SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+		 //SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		 
+		 //Assumes current activity is the searchable activity
+		 //searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		 //searchView.setIconifiedByDefault(false);
 		
-		 /*MenuItemCompat.setOnActionExpandListener(menuItem, new OnActionExpandListener() {
+		 MenuItemCompat.setOnActionExpandListener(menuItem, new OnActionExpandListener() {
 		        @Override
 		        public boolean onMenuItemActionCollapse(MenuItem item) {
 		            // Do something when collapsed
+		        	Toast.makeText(getApplicationContext(), "be collpased", Toast.LENGTH_LONG);
 		            return true;  // Return true to collapse action view
 		        }
 
 		        @Override
 		        public boolean onMenuItemActionExpand(MenuItem item) {
+		        	Toast.makeText(getApplicationContext(), "expanded", Toast.LENGTH_LONG);
 		            // Do something when expanded
 		            return true;  // Return true to expand action view
 		        }
-		    });*/
+		    });
 		return true;
 	}
 	
@@ -53,6 +67,7 @@ public class TabLayout extends FragmentActivity implements ActionBar.TabListener
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.action_search:
+	        	Toast.makeText(getApplicationContext(), "searchView", Toast.LENGTH_LONG);
 	            new Search();
 	            return true;
 	        case R.id.action_circle:
