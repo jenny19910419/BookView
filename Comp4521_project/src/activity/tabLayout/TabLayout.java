@@ -1,6 +1,9 @@
 package activity.tabLayout;
 
+
 import hkust.comp4521.project.R;
+import activity.search.Search;
+import activity.social.Social;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -10,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 
 @SuppressLint("NewApi")
 public class TabLayout extends FragmentActivity implements ActionBar.TabListener
@@ -24,8 +28,39 @@ public class TabLayout extends FragmentActivity implements ActionBar.TabListener
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.whole_page, menu);
+		
+		 MenuItem menuItem = menu.findItem(R.id.action_search);
+		
+		 /*MenuItemCompat.setOnActionExpandListener(menuItem, new OnActionExpandListener() {
+		        @Override
+		        public boolean onMenuItemActionCollapse(MenuItem item) {
+		            // Do something when collapsed
+		            return true;  // Return true to collapse action view
+		        }
+
+		        @Override
+		        public boolean onMenuItemActionExpand(MenuItem item) {
+		            // Do something when expanded
+		            return true;  // Return true to expand action view
+		        }
+		    });*/
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.action_search:
+	            new Search();
+	            return true;
+	        case R.id.action_circle:
+	            new Social();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
  
     @Override

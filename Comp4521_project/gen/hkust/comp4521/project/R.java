@@ -49,11 +49,8 @@ public final class R {
         public static final int tab_layout=0x7f030008;
     }
     public static final class menu {
-        public static final int current=0x7f070000;
-        public static final int home=0x7f070001;
-        public static final int interesting=0x7f070002;
-        public static final int main=0x7f070003;
-        public static final int whole_page=0x7f070004;
+        public static final int main=0x7f070000;
+        public static final int whole_page=0x7f070001;
     }
     public static final class string {
         public static final int Login=0x7f050005;

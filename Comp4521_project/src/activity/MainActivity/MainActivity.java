@@ -1,13 +1,11 @@
 package activity.MainActivity;
 
+import hkust.comp4521.project.R;
+
 import java.util.Observable;
 import java.util.Observer;
 
-import hkust.comp4521.project.R;
-import hkust.comp4521.project.WholePage;
-import hkust.comp4521.project.R.id;
-import hkust.comp4521.project.R.layout;
-import hkust.comp4521.project.R.menu;
+
 import model.User;
 import myUtil.*;
 import activity.tabLayout.TabLayout;
