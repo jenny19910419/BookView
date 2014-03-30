@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
@@ -48,13 +49,13 @@ public class TabLayout extends FragmentActivity implements ActionBar.TabListener
 		        @Override
 		        public boolean onMenuItemActionCollapse(MenuItem item) {
 		            // Do something when collapsed
-		        	Toast.makeText(getApplicationContext(), "be collpased", Toast.LENGTH_LONG);
+		        	Toast.makeText(getApplicationContext(), "be collpased", Toast.LENGTH_LONG).show();
 		            return true;  // Return true to collapse action view
 		        }
 
 		        @Override
 		        public boolean onMenuItemActionExpand(MenuItem item) {
-		        	Toast.makeText(getApplicationContext(), "expanded", Toast.LENGTH_LONG);
+		        	Toast.makeText(getApplicationContext(), "expanded", Toast.LENGTH_LONG).show();
 		            // Do something when expanded
 		            return true;  // Return true to expand action view
 		        }
@@ -67,7 +68,7 @@ public class TabLayout extends FragmentActivity implements ActionBar.TabListener
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.action_search:
-	        	Toast.makeText(getApplicationContext(), "searchView", Toast.LENGTH_LONG);
+	        	Toast.makeText(getApplicationContext(), "searchView", Toast.LENGTH_LONG).show();
 	            new Search();
 	            return true;
 	        case R.id.action_circle:

@@ -87,7 +87,7 @@ public class User extends Data
 			@Override
 			public void callback(Object d) {
 				if(! (d instanceof JSONArray)) {
-					Log.d(TAG, "list_following returns a non-array object");
+					Log.e(TAG, "list_following returns a non-array object");
 					callback.callback(null);
 				}
 				

@@ -16,6 +16,7 @@ public class Str
 	    return sbStr.toString();
 	}
 	
+	
 	/**
 	 * Decodes the passed UTF-8 String using an algorithm that's compatible with
 	 * JavaScript's <code>decodeURIComponent</code> function. Returns
