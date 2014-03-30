@@ -100,7 +100,8 @@ public class Data
 				field.set(rtn, Data.parse_json_value(value));
 				
 			} catch (Exception e) {
-				Log.d(TAG,"error setting field: " + key);
+				Log.e(TAG,"error setting field: " + key);
+				Log.e(TAG,"message: " + e.getMessage());
 				continue;
 			}
 
@@ -110,7 +111,7 @@ public class Data
 	}
 
 	private static Object parse_json_value(Object value) {
-		if (value instanceof String || value instanceof Integer) {
+		if (value instanceof String || value instanceof Integer || value instanceof Long) {
 			return value;
 		} else if (value instanceof JSONArray) {
 			JSONArray arr = (JSONArray) value;
