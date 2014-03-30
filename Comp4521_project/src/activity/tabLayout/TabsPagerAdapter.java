@@ -6,6 +6,7 @@ import activity.home.HomePage;
 import activity.popular.PopPage;
 import activity.search.Search;
 import activity.social.Social;
+import android.support.v4.app.ListFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,7 +21,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
     public Fragment getItem(int index) {
- 
+	 
         switch (index) {
         case 0:
             return new FreshPage();
