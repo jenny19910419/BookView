@@ -18,6 +18,8 @@ public class BookViewAdaptor extends ArrayAdapter<String>{
 	private final String[] originalText;
 	private final String[] reviewText;
 	private final int[] portrait;
+	
+	//test
 
 	public BookViewAdaptor(Context context, String[] values,String[] reviewText,int[] porId) {
 		super(context, R.layout.fragment_bookview, values);
