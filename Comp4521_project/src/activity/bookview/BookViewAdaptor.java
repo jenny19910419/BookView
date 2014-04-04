@@ -1,5 +1,7 @@
 package activity.bookview;
 
+import java.util.ArrayList;
+
 import hkust.comp4521.project.R;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,22 +13,36 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+public class BookViewAdaptor extends ArrayAdapter<BookViewInfo> {
 
-public class BookViewAdaptor extends ArrayAdapter<String>{
-	
 	private final Context context;
-	private final String[] originalText;
-	private final String[] reviewText;
-	private final int[] portrait;
-	
-	//test
+	private final ArrayList<String> originalText;
+	private final ArrayList<String> reviewText;
+	private final ArrayList<Integer> portrait;
+	private final ArrayList<Integer> bookid;
+	private final ArrayList<String> bookname;
 
-	public BookViewAdaptor(Context context, String[] values,String[] reviewText,int[] porId) {
-		super(context, R.layout.fragment_bookview, values);
+
+	public BookViewAdaptor(Context context, BookViewInfo[] info) {
+		super(context, R.layout.fragment_bookview, info);
+		//extract information
 		this.context = context;
-		this.originalText = values;
-		this.reviewText = reviewText;
-		this.portrait = porId;
+		
+		this.originalText = new ArrayList<String>();
+		this.reviewText = new ArrayList<String>();
+		this.portrait = new ArrayList<Integer>();
+		this.bookid = new ArrayList<Integer>();
+		this.bookname = new ArrayList<String>();
+		
+		for(int i = 0; i < info.length;++i) {
+			originalText.add(info[i].getOriginalText());
+			reviewText.add(info[i].getReviewText());
+			portrait.add(info[i].getImageId());
+			bookid.add(info[i].getBookId());
+			bookname.add(info[i].getBookname());
+		}
+		
+		
 	}
 
 	@Override
@@ -37,14 +53,15 @@ public class BookViewAdaptor extends ArrayAdapter<String>{
 				false);
 		TextView textView = (TextView) rowView.findViewById(R.id.firstLine);
 		TextView textView2 = (TextView) rowView.findViewById(R.id.secondLine);
+		TextView textView3 = (TextView) rowView.findViewById(R.id.bookname);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-		textView.setText(originalText[position]);
-		textView2.setText(reviewText[position]);
-		imageView.setImageResource(portrait[position]);
 		
+		textView.setText(originalText.get(position));
+		textView2.setText(reviewText.get(position));
+		textView3.setText(bookname.get(position));
+		imageView.setImageResource(portrait.get(position));
 
 		return rowView;
 	}
-	
 
 }

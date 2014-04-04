@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SearchView;
 
-public class SearchActivity extends ListActivity {
+/*public class SearchActivity extends ListActivity {
 	
 	
 	@Override
@@ -34,4 +34,34 @@ public class SearchActivity extends ListActivity {
 		
 	}
 
+}*/
+
+/*
+ * class that performs searches based on a query string and presents the search results.
+ * Retrieve the query
+ * Search your data
+ * Presenting your result
+ */
+public class SearchActivity extends ListActivity{
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.fragment_search);
+
+	    // Get the intent, verify the action and get the query
+	    Intent intent = getIntent();
+	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	      String query = intent.getStringExtra(SearchManager.QUERY);
+	      doMySearch(query);
+	    }
+	}
+
+	/*
+	 * @param do the search according to your query
+	 */
+	private void doMySearch(String query) {
+		// TODO Auto-generated method stub
+		
+	}
 }

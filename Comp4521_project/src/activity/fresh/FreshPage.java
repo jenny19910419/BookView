@@ -27,18 +27,11 @@ public class FreshPage extends ListFragment
 	  public void onActivityCreated(Bundle savedInstanceState) {
 	    super.onActivityCreated(savedInstanceState);
 	    
-	    //BookViewInfo bookViewOne = new BookViewInfo("first org", "first review", R.drawable.testpor1);
-	    //BookViewInfo bookViewTwo = new BookViewInfo("second org", "second review", R.drawable.testpor2);
-	    
-	    //here adjust sth to retrieve data from the database
-	    String[] originalText = new String[] {"first org", "second org"};
-	    String[] reviewText = new String[] {"first review", "second review"};
-	    int[] portrait = new int[] {R.drawable.testpor1,R.drawable.testpor2};
-	   
-	    
-	    /*BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
-	    		originalText,reviewText,portrait);*/
-	    BookViewAdaptor adapter = new BookViewAdaptor(getActivity(), originalText, reviewText,portrait);
+	    BookViewInfo bookViewOne = new BookViewInfo("first org", "first review", R.drawable.testpor1, 1, "bookOneName");
+	    BookViewInfo bookViewTwo = new BookViewInfo("second org", "second review", R.drawable.testpor2, 2, "BookTwoName");
+	  
+	    BookViewInfo[] bookViewArray = {bookViewOne, bookViewTwo};
+	    BookViewAdaptor adapter = new BookViewAdaptor(getActivity(), bookViewArray);
 
 	    setListAdapter(adapter);
 	  }
@@ -46,7 +39,7 @@ public class FreshPage extends ListFragment
 	
 	 @Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-	    String item = (String) getListAdapter().getItem(position);
+	    BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
 	 }
 	
