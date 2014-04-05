@@ -23,20 +23,32 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="activity.search.SearchActivity" />
         </activity>
+        
         <activity
             android:name="activity.tabLayout.TabLayout"
             android:label="@string/app_name"
             android:parentActivityName="activity.tabLayout.TabLayout" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="activity.search.SearchActivity" />
         </activity>
+        
         <activity
-            android:name="hkust.comp4521.project.WholePage"
-            android:label="@string/title_activity_whole_page"
-            android:parentActivityName="activity.MainActivity.MainActivity" >
-        </activity>
-        <activity android:name="activity.search.SearchActivity" >
+            android:name="activity.search.SearchActivity"
+            android:launchMode="singleTop"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter > 
+                 <action android:name="android.intent.action.VIEW" /> 
             </intent-filter>
 
             <meta-data
