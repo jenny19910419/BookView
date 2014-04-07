@@ -12,6 +12,7 @@ public class BookView extends Data
 	public static final String TAG = "Data";
 	public String authorPtr = "";
 	public String bookPtr = "";
+	public String refText = "";
 	public String content = "";
 	public long createTime = 0;
 	

@@ -118,6 +118,7 @@ public class User extends Data
 				if(d == null) {
 					Log.d(TAG, "add_following fails");
 					callback.callback(null);
+					return;
 				}
 				
 				callback.callback(Data.from_json((JSONObject) d));
@@ -131,5 +132,54 @@ public class User extends Data
 	 */
 	public static User get_active_user() {
 		return User.activeUser;
+	}
+	
+	/**
+	 * get the fresh informations of active user
+	 * @param bookViewCnt maximum book-view number
+	 * @param commentCnt maximum comment number
+	 * @param callback
+	 */
+	public static void server_get_fresh(int bookViewCnt, int commentCnt, final Callable callback) {
+		Server.post("User/get_fresh", new String[]{Integer.toString(bookViewCnt), Integer.toString(commentCnt)}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				JSONObject res = (JSONObject)d;
+				JSONArray bookViewJsonArr = null;
+				JSONArray bookJsonArr = null;
+				JSONArray commentJsonArr = null;
+				JSONArray userJsonArr = null;
+				try {
+					bookViewJsonArr = res.getJSONArray("bookViewArr");
+					bookJsonArr = res.getJSONArray("bookArr");
+					commentJsonArr = res.getJSONArray("commentArr");
+					userJsonArr = res.getJSONArray("userArr");
+				} catch (JSONException e) {
+					Log.e(TAG, "get_fresh bad response");
+					callback.callback(null);
+					return;
+				}
+				
+				GetFreshResult rtn = new GetFreshResult();
+				rtn.bookViewArr = Data.from_json_arr(BookView.class, bookViewJsonArr);
+				rtn.bookArr = Data.from_json_arr(Book.class, bookJsonArr);
+				rtn.CommentArr = Data.from_json_arr(BookView_Comment.class, commentJsonArr);
+				rtn.userArr = Data.from_json_arr(User.class, userJsonArr);
+				
+				callback.callback(rtn);
+				
+			}
+			
+			
+		});
+	}
+	public static class GetFreshResult
+	{
+		public BookView[] bookViewArr;
+		public Book[] bookArr;
+		public BookView_Comment[] CommentArr;
+		public User[] userArr;
+		
 	}
 }

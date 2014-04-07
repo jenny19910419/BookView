@@ -1,5 +1,6 @@
 package model;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 
 public class Data
 {
+	private static final String TAG = "Data";
 	protected String _thisPtr = "";
 	private static String PACKAGE_PATH = "model";
 	
@@ -107,6 +109,22 @@ public class Data
 
 		}
 
+		return rtn;
+	}
+	
+	public static <E extends Data> E[] from_json_arr (Class<E> clazz, JSONArray jsonArr){
+		@SuppressWarnings("unchecked")
+        final E[] rtn = (E[]) Array.newInstance(clazz, jsonArr.length());
+		for(int i=0; i<jsonArr.length(); i++) {
+			JSONObject iJson;
+			try {
+				iJson = jsonArr.getJSONObject(i);
+			} catch (JSONException e) {
+				Log.w(TAG, "bad json array");
+				continue;
+			}
+			rtn[i] = (E) Data.from_json(iJson);
+		}
 		return rtn;
 	}
 
