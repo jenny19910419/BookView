@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import model.User;
 import myUtil.Callable;
+import myUtil.Server;
 
 /**
  * a controller for the login activity
@@ -35,8 +36,11 @@ public class MainActivityController extends Observable
 					return;
 				}
 				setChanged();
-				notifyObservers(STATE_LOGIN_SUCCESS);
 				
+				// do some debug action after logged in
+				Server.server_do_debug();
+				
+				notifyObservers(STATE_LOGIN_SUCCESS);
 			}
 
 		});

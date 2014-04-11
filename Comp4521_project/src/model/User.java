@@ -147,14 +147,17 @@ public class User extends Data
 			public void callback(Object d) {
 				JSONObject res = (JSONObject)d;
 				JSONArray bookViewJsonArr = null;
-				JSONArray bookJsonArr = null;
 				JSONArray commentJsonArr = null;
-				JSONArray userJsonArr = null;
+				JSONArray relatedBookJsonArr = null;
+				JSONArray relatedBookViewJsonArr = null;
+				JSONArray relatedUserJsonArr = null;
 				try {
 					bookViewJsonArr = res.getJSONArray("bookViewArr");
-					bookJsonArr = res.getJSONArray("bookArr");
 					commentJsonArr = res.getJSONArray("commentArr");
-					userJsonArr = res.getJSONArray("userArr");
+					
+					relatedBookJsonArr = res.getJSONArray("relatedBookArr");
+					relatedBookViewJsonArr = res.getJSONArray("relatedBookViewArr");
+					relatedUserJsonArr = res.getJSONArray("relatedUserArr");
 				} catch (JSONException e) {
 					Log.e(TAG, "get_fresh bad response");
 					callback.callback(null);
@@ -163,9 +166,10 @@ public class User extends Data
 				
 				GetFreshResult rtn = new GetFreshResult();
 				rtn.bookViewArr = Data.from_json_arr(BookView.class, bookViewJsonArr);
-				rtn.bookArr = Data.from_json_arr(Book.class, bookJsonArr);
-				rtn.CommentArr = Data.from_json_arr(BookView_Comment.class, commentJsonArr);
-				rtn.userArr = Data.from_json_arr(User.class, userJsonArr);
+				rtn.commentArr = Data.from_json_arr(BookView_Comment.class, commentJsonArr);
+				rtn.relatedBookArr = Data.from_json_arr(Book.class, relatedBookJsonArr);
+				rtn.relatedBookViewArr = Data.from_json_arr(BookView.class, relatedBookViewJsonArr);
+				rtn.relatedUserArr = Data.from_json_arr(User.class, relatedUserJsonArr);
 				
 				callback.callback(rtn);
 				
@@ -177,9 +181,12 @@ public class User extends Data
 	public static class GetFreshResult
 	{
 		public BookView[] bookViewArr;
-		public Book[] bookArr;
-		public BookView_Comment[] CommentArr;
-		public User[] userArr;
+		public BookView_Comment[] commentArr;
+		public Book[] relatedBookArr;
+		public BookView[] relatedBookViewArr;
+		public User[] relatedUserArr;
 		
 	}
+	
+	
 }

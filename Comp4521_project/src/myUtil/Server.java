@@ -15,10 +15,11 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
 
+import model.User;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 import android.util.Log;
 
@@ -116,11 +117,10 @@ public class Server
 			Log.e(TAG, "Read Exception");
 			return null;
 		}
-		
+
 		// store cookie
 		store_cookie();
-		
-		
+
 		Object rtn;
 		Log.i(TAG, response);
 		try {
@@ -130,15 +130,14 @@ public class Server
 			try {
 				// test if this is an JSON array
 				rtn = new JSONArray(response);
-			}
-			catch(JSONException e1) {
+			} catch (JSONException e1) {
 				return null;
 			}
-			
+
 		}
-		
+
 		// if this is an JSON object, check if it contains "error"
-		if(rtn instanceof JSONObject) {
+		if (rtn instanceof JSONObject) {
 			JSONObject jsonR = (JSONObject) rtn;
 			if (jsonR.has("error")) {
 				try {
@@ -149,7 +148,6 @@ public class Server
 				return null;
 			}
 		}
-		
 
 		return rtn;
 	}
@@ -175,6 +173,10 @@ public class Server
 
 	private static String make_cookie() {
 		return Server.sessionKey + "=" + Server.sessionValue;
+	}
+
+	public static void server_do_debug() {
+
 	}
 
 }
