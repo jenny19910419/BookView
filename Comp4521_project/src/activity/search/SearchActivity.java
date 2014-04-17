@@ -79,7 +79,7 @@ public class SearchActivity extends ListActivity {
 	 */
 	private void doMySearch(String query) {
 		// TODO Auto-generated method stub
-
+        //test instance
 		BookViewInfo bookViewOne = new BookViewInfo("first org",
 				"first review", R.drawable.testpor1, 1, "bookOneName");
 		BookViewInfo bookViewTwo = new BookViewInfo("second org",
