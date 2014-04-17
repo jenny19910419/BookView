@@ -76,7 +76,7 @@ public class Server
 			connection = (HttpURLConnection) url.openConnection();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Log.e(TAG, "IO Exception");
+			Log.e(TAG, "IO Exception " + e.getMessage());
 			return null;
 		}
 		connection.setDoOutput(true);
@@ -85,7 +85,7 @@ public class Server
 		try {
 			connection.setRequestMethod("POST");
 		} catch (ProtocolException e) {
-			Log.e(TAG, "Protocol Exception");
+			Log.e(TAG, "Protocol Exception " + e.getMessage());
 			return null;
 		}
 		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -101,7 +101,7 @@ public class Server
 			wr.flush();
 			wr.close();
 		} catch (IOException e1) {
-			Log.e(TAG, "Write Exception");
+			Log.e(TAG, "Write Exception: "+e1.getMessage());
 			return null;
 		}
 
@@ -114,7 +114,7 @@ public class Server
 				response += current;
 			}
 		} catch (IOException e2) {
-			Log.e(TAG, "Read Exception");
+			Log.e(TAG, "Read Exception " + e2.getMessage());
 			return null;
 		}
 
