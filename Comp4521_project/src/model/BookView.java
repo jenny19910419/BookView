@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
@@ -39,6 +41,69 @@ public class BookView extends Data
 				
 				callback.callback(rtn);
 				
+			}
+			
+		});
+	}
+	/**
+	 * upload the change of this book-view.
+	 * @param bookPtr the pointer of book
+	 * @param refText the text referenced in the book, filled by user
+	 * @param content the content of the book-view
+	 * @param callback
+	 * 
+	 * callback
+	 * @param {BookView} this
+	 */
+	public void server_put(final Callable callback ) {
+		final BookView that = this;
+		Server.post("BookView/put", new String[]{this.get_ptr(), this.bookPtr, this.refText, this.content}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				
+				BookView rtn = (BookView) Data.from_json((JSONObject)d);
+				if(rtn == null) {
+					callback.callback(null);
+				}
+				else {
+					that._thisPtr = rtn.get_ptr();
+					that.createTime = rtn.createTime;
+					callback.callback(this);
+				}
+				
+				
+			}
+			
+		});
+	}
+	/**
+	 * list the comment of this book-view
+	 * @param callback
+	 * 
+	 * callback
+	 * @param {BookView_Comment[]}
+	 */
+	public void server_list_comment(final Callable callback) {
+		Server.post("BookView/list_comment", new String[]{this.get_ptr()}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				if(! (d instanceof JSONArray)) {
+					Log.e(TAG, "list_comment returns a non-array object");
+					callback.callback(null);
+				}
+				
+				JSONArray arr = (JSONArray)d;
+				BookView_Comment[] rtn = new BookView_Comment[arr.length()];
+				for(int i=0;i<arr.length();i++) {
+					try {
+						rtn[i] = (BookView_Comment)Data.from_json((JSONObject)arr.get(i));
+					} catch (JSONException e) {
+						rtn[i] = null;
+					}
+				}
+				callback.callback(rtn);
 			}
 			
 		});

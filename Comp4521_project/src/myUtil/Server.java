@@ -155,7 +155,14 @@ public class Server
 	private static String string_arr_encode(String[] arr) {
 		String[] toImplode = new String[arr.length];
 		for (int i = 0; i < arr.length; i++) {
-			toImplode[i] = "\"" + arr[i].replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
+			String str = arr[i];
+			if(str == null) {
+				// handle the case when the string is null
+				toImplode[i] = "null";
+			}
+			else {
+				toImplode[i] = "\"" + arr[i].replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
+			}	
 		}
 		return "[" + Str.join(toImplode, ",") + "]";
 
