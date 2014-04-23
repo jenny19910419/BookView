@@ -180,11 +180,11 @@ public class User extends Data
 	}
 	public static class GetFreshResult
 	{
-		public BookView[] bookViewArr;
-		public BookView_Comment[] commentArr;
-		public Book[] relatedBookArr;
-		public BookView[] relatedBookViewArr;
-		public User[] relatedUserArr;
+		public BookView[] bookViewArr; // fresh book-views: the book-view that your followings posted
+		public BookView_Comment[] commentArr; // fresh comments: you book-view has received a comment
+		public Book[] relatedBookArr; // the books referenced in fresh book-views
+		public BookView[] relatedBookViewArr; // the book-view referenced in the fresh comments
+		public User[] relatedUserArr; // the users related in fresh book-views and fresh comments
 		
 	}
 	
