@@ -5,7 +5,9 @@ import hkust.comp4521.project.R;
 import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
+import activity.bookview.BookView_One;
 import activity.bookview.TestAdapter;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -40,6 +42,11 @@ public class FreshPage extends ListFragment
 	public void onListItemClick(ListView l, View v, int position, long id) {
 	    BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+         Intent in = new Intent(getActivity(),BookView_One.class);
+		
+		// start the main activity
+         getActivity().startActivity(in);
+	    
 	 }
 	
 	
