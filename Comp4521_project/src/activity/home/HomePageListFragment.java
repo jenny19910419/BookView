@@ -4,7 +4,10 @@ import hkust.comp4521.project.R;
 import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
+import activity.bookview.BookView_One;
+import activity.fresh.FreshPage;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -31,6 +34,8 @@ public class HomePageListFragment extends ListFragment
 	public void onListItemClick(ListView l, View v, int position, long id) {
 	    BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+	    Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
+	     HomePageListFragment.this.startActivity(in);
 	 }
 
 }

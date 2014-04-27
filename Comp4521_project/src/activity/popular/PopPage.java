@@ -5,6 +5,8 @@ import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
 import activity.bookview.BookView_One;
+import activity.fresh.FreshPage;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -34,6 +36,8 @@ public class PopPage  extends ListFragment {
 	
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
+		 Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
+	     PopPage.this.startActivity(in);
      }
 
 

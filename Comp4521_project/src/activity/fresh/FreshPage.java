@@ -32,7 +32,7 @@ public class FreshPage extends ListFragment
 	    //replaced by mockviewlist
 	    MockBookViewList mkbookviewlist = new MockBookViewList();
 		BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
-				mkbookviewlist.bookViewArray2);
+				mkbookviewlist.bookViewArray);
 	
 	    setListAdapter(adapter);
 	  }
@@ -42,11 +42,10 @@ public class FreshPage extends ListFragment
 	public void onListItemClick(ListView l, View v, int position, long id) {
 	    BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
-         Intent in = new Intent(getActivity(),BookView_One.class);
-		
-		// start the main activity
-         getActivity().startActivity(in);
-	    
+        
+	    Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
+	     FreshPage.this.startActivity(in);
+         
 	 }
 	
 	

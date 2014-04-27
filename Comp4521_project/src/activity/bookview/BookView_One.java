@@ -37,6 +37,7 @@ public class BookView_One extends Activity {
 		textView.setText(info.getOriginalText());
 		textView2.setText(info.getReviewText());
 		textView3.setText(info.getBookname());
-		textView4.setText(info.getBookId());
+		textView4.setText(String.valueOf(info.getBookId()));
+		//imageView.
     }
 }
