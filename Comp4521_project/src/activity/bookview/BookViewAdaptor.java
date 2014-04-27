@@ -56,9 +56,24 @@ public class BookViewAdaptor extends ArrayAdapter<BookViewInfo> {
 		TextView textView3 = (TextView) rowView.findViewById(R.id.bookname);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		
-		textView.setText(originalText.get(position));
-		textView2.setText(reviewText.get(position));
-		textView3.setText(bookname.get(position));
+		if(originalText.get(position).length()>15){
+		    textView.setText(originalText.get(position).substring(0, 15));
+		}
+		else{
+			textView.setText(originalText.get(position));
+		}
+		if(reviewText.get(position).length()>15){
+		    textView2.setText(reviewText.get(position).substring(0, 15));
+		}
+		else{
+			textView2.setText(reviewText.get(position));
+		}
+		if(bookname.get(position).length()>20){
+		    textView3.setText(bookname.get(position).substring(0, 20));
+		}
+		else{
+			textView3.setText(bookname.get(position));
+		}
 		imageView.setImageResource(portrait.get(position));
 
 		return rowView;

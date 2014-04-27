@@ -2,7 +2,7 @@ package activity.fresh;
 
 import model.User;
 import hkust.comp4521.project.R;
-
+import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
 import activity.bookview.TestAdapter;
@@ -27,12 +27,11 @@ public class FreshPage extends ListFragment
 	  public void onActivityCreated(Bundle savedInstanceState) {
 	    super.onActivityCreated(savedInstanceState);
 	    
-	    BookViewInfo bookViewOne = new BookViewInfo("first org", "first review", R.drawable.testpor1, 1, "bookOneName");
-	    BookViewInfo bookViewTwo = new BookViewInfo("second org", "second review", R.drawable.testpor2, 2, "BookTwoName");
-	  
-	    BookViewInfo[] bookViewArray = {bookViewOne, bookViewTwo};
-	    BookViewAdaptor adapter = new BookViewAdaptor(getActivity(), bookViewArray);
-
+	    //replaced by mockviewlist
+	    MockBookViewList mkbookviewlist = new MockBookViewList();
+		BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
+				mkbookviewlist.bookViewArray2);
+	
 	    setListAdapter(adapter);
 	  }
 	
