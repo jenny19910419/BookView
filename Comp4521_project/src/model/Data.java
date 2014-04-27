@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class Data
 {
-	private static final String TAG = "Data";
+	private static final String TAG = "Data ";
 	protected String _thisPtr = "";
 	private static String PACKAGE_PATH = "model";
 	
