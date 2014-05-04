@@ -13,6 +13,7 @@ public class User extends Data
 {
 	public static final String TAG = "User";
 	public String email = "";
+	public String name = "";
 	
 	private static User activeUser = null;
 	/**
@@ -186,6 +187,22 @@ public class User extends Data
 		public BookView[] relatedBookViewArr; // the book-view referenced in the fresh comments
 		public User[] relatedUserArr; // the users related in fresh book-views and fresh comments
 		
+	}
+	/**
+	 * edit the active user
+	 * @param name
+	 * @param password
+	 */
+	public static void server_put(String name, String password, final Callable callback) {
+		Server.post("User/put", new String[]{name,password}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				callback.callback((User)d);
+				
+			}
+			
+		});
 	}
 	
 	
