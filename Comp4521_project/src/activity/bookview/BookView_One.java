@@ -24,6 +24,9 @@ public class BookView_One extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		setContentView(R.layout.fragment_bookview_total);
          
         textView = (TextView) findViewById(R.id.firstLine);

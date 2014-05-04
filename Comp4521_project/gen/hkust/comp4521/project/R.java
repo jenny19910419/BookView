@@ -33,8 +33,9 @@ public final class R {
         public static final int action_circle=0x7f090014;
         public static final int action_search=0x7f090013;
         public static final int action_settings=0x7f090012;
-        public static final int bookid=0x7f09000c;
+        public static final int bookid=0x7f09000b;
         public static final int bookname=0x7f090007;
+        public static final int bookview_detail_comment_title=0x7f09000c;
         public static final int firstLine=0x7f090008;
         public static final int fragment2=0x7f09000f;
         public static final int home_page_icon=0x7f09000d;
@@ -48,7 +49,6 @@ public final class R {
         public static final int poppgae_title=0x7f09000a;
         public static final int secondLine=0x7f090009;
         public static final int status_text=0x7f090011;
-        public static final int textView2=0x7f09000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

@@ -29,11 +29,13 @@ import android.widget.Toast;
 @SuppressLint("NewApi")
 public class TabLayout extends FragmentActivity implements
 		ActionBar.TabListener, SearchView.OnQueryTextListener{
+	
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	private SearchView mSearchView;
 	private TextView mStatusView; //for test
+	
 	// Tab titles
 	private String[] tabs = { "Fresh", "Home", "Pop" };
 
