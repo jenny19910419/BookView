@@ -17,7 +17,7 @@ public class Data
 	private static String PACKAGE_PATH = "model";
 	
 	/**
-	 * construct a Data Object from a JSON returned by server.
+	 * construct a Data Object from a JSON returned by server. only used in directly parsing data from server.
 	 * @param jObject the JSON returned by server
 	 * @return the parsed Data object. returns null if parsing fails.
 	 */
@@ -111,7 +111,12 @@ public class Data
 
 		return rtn;
 	}
-	
+	/**
+	 * construct an array of Data object from a JSONArray. only used in directly parsing data from server.
+	 * @param clazz
+	 * @param jsonArr
+	 * @return
+	 */
 	public static <E extends Data> E[] from_json_arr (Class<E> clazz, JSONArray jsonArr){
 		@SuppressWarnings("unchecked")
         final E[] rtn = (E[]) Array.newInstance(clazz, jsonArr.length());
@@ -152,5 +157,21 @@ public class Data
 	 */
 	public String get_ptr() {
 		return this._thisPtr;
+	}
+	
+	/**
+	 * get the data from an array of data by its pointer
+	 * @param arr
+	 * @param ptr
+	 * @return
+	 */
+	public static <E extends Data> E get_data_from_array(E[] arr, String ptr) {
+		for(int i=0;i<arr.length;i++) {
+			E data = arr[i];
+			if(data.get_ptr().equals(ptr)) {
+				return data;
+			}
+		}
+		return null;
 	}
 }
