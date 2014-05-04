@@ -15,6 +15,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
 
+import model.Book;
 import model.User;
 
 import org.json.JSONArray;
@@ -183,7 +184,17 @@ public class Server
 	}
 
 	public static void server_do_debug() {
+		Log.d(TAG, "doing debug work");
+		Book.server_search("elec1200", new Callable() {
 
+			@Override
+			public void callback(Object d) {
+				Book[] res = (Book[])d;
+				Log.d(TAG, res[0].name);
+			}
+			
+			
+		});
 	}
 
 }
