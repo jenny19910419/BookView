@@ -4,16 +4,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import myUtil.Callable;
 import myUtil.Server;
+import myUtil.Str;
 
 public class User extends Data
 {
 	public static final String TAG = "User";
 	public String email = "";
 	public String name = "";
+	public String imageUrl = "";
 	
 	private static User activeUser = null;
 	/**
@@ -206,6 +209,10 @@ public class User extends Data
 			}
 			
 		});
+	}
+	
+	public Bitmap get_image() {
+		return Str.data_url_2_img(this.imageUrl);
 	}
 	
 	

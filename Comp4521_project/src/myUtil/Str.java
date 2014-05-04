@@ -4,6 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 public class Str
 {
 	public static String join(String[] aArr, String sSep) {
@@ -70,5 +74,12 @@ public class Str
 		}
 
 		return result;
+	}
+	
+	public static Bitmap data_url_2_img(String dataUrl) {
+		String encodingPrefix = "base64,";
+		int contentStartIndex = dataUrl.indexOf(encodingPrefix) + encodingPrefix.length();
+		byte[] imageData = Base64.decode(dataUrl.substring(contentStartIndex), Base64.DEFAULT);
+		return BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
 	}
 }
