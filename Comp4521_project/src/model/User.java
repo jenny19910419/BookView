@@ -198,7 +198,10 @@ public class User extends Data
 
 			@Override
 			public void callback(Object d) {
-				callback.callback((User)d);
+				User res = (User)d;
+				User activeUser = User.get_active_user();
+				activeUser.name = res.name;
+				callback.callback(activeUser);
 				
 			}
 			
