@@ -185,16 +185,7 @@ public class Server
 
 	public static void server_do_debug() {
 		Log.d(TAG, "doing debug work");
-		Book.server_search("elec1200", new Callable() {
-
-			@Override
-			public void callback(Object d) {
-				Book[] res = (Book[])d;
-				Log.d(TAG, res[0].name);
-			}
-			
-			
-		});
+		
 	}
 
 }
