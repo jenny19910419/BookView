@@ -1,5 +1,8 @@
 package model;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -196,21 +199,37 @@ public class User extends Data
 	 * @param name
 	 * @param password
 	 */
-	public static void server_put(String name, String password, final Callable callback) {
-		Server.post("User/put", new String[]{name,password}, new Callable() {
+	public void server_put(final Callable callback) {
+		Server.post("User/put", new String[]{this.name,this.imageUrl}, new Callable() {
 
 			@Override
 			public void callback(Object d) {
-				User res = (User)Data.from_json((JSONObject)d);
-				User activeUser = User.get_active_user();
-				activeUser.name = res.name;
 				callback.callback(activeUser);
 				
 			}
 			
 		});
 	}
-	
+	public static void set_password(String oldPassword, String newPassword, final Callable callback) {
+		Server.post("User/set_password", new String[]{oldPassword, newPassword}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				
+				if(d == null) {
+					callback.callback(false);
+				}
+				else {
+					callback.callback(true);
+				}
+				
+			}
+			
+		});
+	}
+	public void set_image(Bitmap bitmap) {
+		this.imageUrl = Str.img_2_data_url(bitmap);
+	}
 	public Bitmap get_image() {
 		return Str.data_url_2_img(this.imageUrl);
 	}

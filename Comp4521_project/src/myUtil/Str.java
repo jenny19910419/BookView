@@ -1,5 +1,6 @@
 package myUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -82,4 +83,11 @@ public class Str
 		byte[] imageData = Base64.decode(dataUrl.substring(contentStartIndex), Base64.DEFAULT);
 		return BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
 	}
+	
+	public static String img_2_data_url(Bitmap bitmap) {
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.PNG, 60, os);
+		return "data:image/png;base64," + Base64.encodeToString(os.toByteArray(), Base64.DEFAULT);
+	}
+	
 }
