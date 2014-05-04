@@ -44,7 +44,7 @@ public class FreshPage extends ListFragment
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
         
 	    Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
-	     FreshPage.this.startActivity(in);
+	    FreshPage.this.startActivity(in);
          
 	 }
 	

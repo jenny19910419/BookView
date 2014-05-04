@@ -28,11 +28,12 @@ public final class R {
         public static final int testpor2=0x7f020004;
     }
     public static final class id {
+        public static final int LinearLayout=0x7f090014;
         public static final int Password=0x7f090003;
         public static final int Username=0x7f090001;
-        public static final int action_circle=0x7f090014;
-        public static final int action_search=0x7f090013;
-        public static final int action_settings=0x7f090012;
+        public static final int action_circle=0x7f090023;
+        public static final int action_search=0x7f090022;
+        public static final int action_settings=0x7f090021;
         public static final int bookid=0x7f09000b;
         public static final int bookname=0x7f090007;
         public static final int bookview_detail_comment_title=0x7f09000c;
@@ -45,10 +46,24 @@ public final class R {
         public static final int loginHead=0x7f090000;
         public static final int myPassword=0x7f090004;
         public static final int myUsername=0x7f090002;
-        public static final int pager=0x7f090010;
+        public static final int newpassword=0x7f09001c;
+        public static final int newpasswordTextView=0x7f09001b;
+        public static final int oldpassword=0x7f09001a;
+        public static final int oldpasswordTextView=0x7f090019;
+        public static final int output=0x7f09001d;
+        public static final int pager=0x7f09001f;
         public static final int poppgae_title=0x7f09000a;
+        public static final int portraitImage=0x7f090011;
         public static final int secondLine=0x7f090009;
-        public static final int status_text=0x7f090011;
+        public static final int settingLoginEmail=0x7f090013;
+        public static final int settingPassword=0x7f090018;
+        public static final int settingUsername=0x7f090016;
+        public static final int status_text=0x7f090020;
+        public static final int textView1=0x7f090010;
+        public static final int textView2=0x7f090012;
+        public static final int textView3=0x7f090015;
+        public static final int textView4=0x7f090017;
+        public static final int username=0x7f09001e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -59,7 +74,11 @@ public final class R {
         public static final int fragment_homepage=0x7f030005;
         public static final int fragment_search=0x7f030006;
         public static final int fragment_social=0x7f030007;
-        public static final int tab_layout=0x7f030008;
+        public static final int newsetting=0x7f030008;
+        public static final int setpassword=0x7f030009;
+        public static final int setting=0x7f03000a;
+        public static final int setusername=0x7f03000b;
+        public static final int tab_layout=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -74,6 +93,7 @@ public final class R {
         public static final int hello_world=0x7f060002;
         public static final int password=0x7f060004;
         public static final int search_hint=0x7f06000d;
+        public static final int setting_titles=0x7f06000e;
         public static final int title_activity_current=0x7f06000c;
         public static final int title_activity_home=0x7f06000a;
         public static final int title_activity_interesting=0x7f06000b;

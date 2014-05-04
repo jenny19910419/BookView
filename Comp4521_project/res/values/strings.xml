@@ -15,6 +15,7 @@
     <string name="title_activity_interesting">InterestingActivity</string>
     <string name="title_activity_current">CurrentActivity</string>
     <string name="search_hint">Search bookviews </string>
+    <string name="setting_titles">Personal Information Settings</string>
     
 
 </resources>

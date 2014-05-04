@@ -3,7 +3,10 @@ package activity.tabLayout;
 import java.util.List;
 
 import hkust.comp4521.project.R;
+import activity.bookview.BookView_One;
+import activity.fresh.FreshPage;
 import activity.search.Search;
+import activity.setting.Setting;
 import activity.social.Social;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -13,6 +16,7 @@ import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -163,6 +167,11 @@ public class TabLayout extends FragmentActivity implements
 		case R.id.action_circle:
 			new Social();
 			return true;
+		case R.id.action_settings:
+			Intent in = new Intent(this, Setting.class);
+		    this.startActivity(in);
+			return true;
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}

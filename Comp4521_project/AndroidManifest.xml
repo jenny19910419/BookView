@@ -41,6 +41,11 @@
             android:label="@string/app_name"
             android:parentActivityName="activity.tabLayout.TabLayout">
         </activity>
+        <activity 
+            android:name="activity.setting.Setting"
+            android:label="@string/app_name"
+            android:parentActivityName="activity.tabLayout.TabLayout">
+        </activity>
         <activity
             android:name="activity.search.SearchActivity"
             android:label="@string/app_name"
