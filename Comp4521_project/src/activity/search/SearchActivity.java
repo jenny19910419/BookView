@@ -102,7 +102,7 @@ public class SearchActivity extends ListActivity {
 								}
 								BookAdaptor adapter = new BookAdaptor(SearchActivity.this, booklist);
 								setListAdapter(adapter);
-								Toast.makeText(getApplicationContext(), booklist[0].name, Toast.LENGTH_SHORT).show();
+								//Toast.makeText(getApplicationContext(), booklist[0].name, Toast.LENGTH_SHORT).show();
 								
 							}
 							
