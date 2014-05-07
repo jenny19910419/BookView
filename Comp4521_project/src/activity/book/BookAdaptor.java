@@ -48,8 +48,28 @@ public class BookAdaptor extends ArrayAdapter<Book> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.fragment_book, parent,
 				false);
+		TextView textView = (TextView) rowView.findViewById(R.id.book_bookid);
+		TextView textView2 = (TextView) rowView.findViewById(R.id.book_author);
+		TextView textView3 = (TextView) rowView.findViewById(R.id.book_bookname);
+		if(bookid.get(position).length()>40){
+		    textView.setText(bookid.get(position).substring(0, 40));
+		}
+		else{
+			textView.setText(bookid.get(position));
+		}
+		if(author.get(position).length()>40){
+		    textView2.setText(author.get(position).substring(0, 40));
+		}
+		else{
+			textView2.setText(author.get(position));
+		}
+		if(bookname.get(position).length()>40){
+		    textView3.setText(bookname.get(position).substring(0, 40));
+		}
+		else{
+			textView3.setText(bookname.get(position));
+		}
 		
-
 		return rowView;
 	}
 
