@@ -1,8 +1,8 @@
 package activity.fresh;
 
+import mockData.MockData;
 import model.User;
 import hkust.comp4521.project.R;
-import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
 import activity.bookview.BookView_One;
@@ -30,9 +30,8 @@ public class FreshPage extends ListFragment
 	    super.onActivityCreated(savedInstanceState);
 	    
 	    //replaced by mockviewlist
-	    MockBookViewList mkbookviewlist = new MockBookViewList();
-		BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
-				mkbookviewlist.bookViewArray);
+	    BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
+	    		MockData.BookView.sampleArr1, MockData.Book.sampleArr);
 	
 	    setListAdapter(adapter);
 	  }
@@ -40,7 +39,7 @@ public class FreshPage extends ListFragment
 	
 	 @Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-	    BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
+	    model.BookView item = (model.BookView) getListAdapter().getItem(position);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
         
 	    Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);

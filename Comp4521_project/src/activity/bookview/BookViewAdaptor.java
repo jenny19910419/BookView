@@ -2,6 +2,9 @@ package activity.bookview;
 
 import java.util.ArrayList;
 
+import mockData.MockData;
+import model.Data;
+
 import hkust.comp4521.project.R;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,33 +16,40 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class BookViewAdaptor extends ArrayAdapter<BookViewInfo> {
+public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
+	
+	public static final String TAG = "BookViewAdapter";
 
 	private final Context context;
 	private final ArrayList<String> originalText;
 	private final ArrayList<String> reviewText;
 	private final ArrayList<Integer> portrait;
-	private final ArrayList<Integer> bookid;
+	private final ArrayList<String> bookid;
 	private final ArrayList<String> bookname;
 
 
-	public BookViewAdaptor(Context context, BookViewInfo[] info) {
-		super(context, R.layout.fragment_bookview, info);
+	public BookViewAdaptor(Context context, model.BookView[] bookViewArr, model.Book[] relatedBookArr) {
+		super(context, R.layout.fragment_bookview, bookViewArr);
+		
 		//extract information
 		this.context = context;
 		
 		this.originalText = new ArrayList<String>();
 		this.reviewText = new ArrayList<String>();
 		this.portrait = new ArrayList<Integer>();
-		this.bookid = new ArrayList<Integer>();
+		this.bookid = new ArrayList<String>();
 		this.bookname = new ArrayList<String>();
 		
-		for(int i = 0; i < info.length;++i) {
-			originalText.add(info[i].getOriginalText());
-			reviewText.add(info[i].getReviewText());
-			portrait.add(info[i].getImageId());
-			bookid.add(info[i].getBookId());
-			bookname.add(info[i].getBookname());
+	
+		
+		for(int i = 0; i < bookViewArr.length;++i) {
+			model.BookView bookView = bookViewArr[i];
+			model.Book book = Data.get_data_from_array(relatedBookArr, bookView.bookPtr);
+			originalText.add(bookView.content);
+			reviewText.add(bookView.refText);
+			portrait.add(R.drawable.testpor1);
+			bookid.add(book.ISBN);
+			bookname.add(book.name);
 		}
 		
 		

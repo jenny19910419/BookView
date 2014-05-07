@@ -1,7 +1,7 @@
 package activity.popular;
 
+import mockData.MockData;
 import hkust.comp4521.project.R;
-import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
 import activity.bookview.BookView_One;
@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +27,11 @@ public class PopPage  extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		// wangbo replace the test instance
-		
-		MockBookViewList mkbookviewlist = new MockBookViewList();
 		BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
-				mkbookviewlist.bookViewArray2);
+				MockData.BookView.sampleArr1, MockData.Book.sampleArr);
 
 		setListAdapter(adapter);
+		
 	}
 	
 	public void onListItemClick(ListView l, View v, int position, long id) {

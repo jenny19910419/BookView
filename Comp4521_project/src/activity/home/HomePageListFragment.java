@@ -1,7 +1,7 @@
 package activity.home;
 
+import mockData.MockData;
 import hkust.comp4521.project.R;
-import MockBookViewList.MockBookViewList;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
 import activity.bookview.BookView_One;
@@ -23,8 +23,8 @@ public class HomePageListFragment extends ListFragment
 	  public void onActivityCreated(Bundle savedInstanceState) {
 	    super.onActivityCreated(savedInstanceState);
 	   //wangbo replace the test instance
-	    MockBookViewList mkbookviewlist= new MockBookViewList();
-	    BookViewAdaptor adapter = new BookViewAdaptor(getActivity(), mkbookviewlist.bookViewArray1);
+	    BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
+	    		MockData.BookView.sampleArr1, MockData.Book.sampleArr);
 
 	    setListAdapter(adapter);
 	  }

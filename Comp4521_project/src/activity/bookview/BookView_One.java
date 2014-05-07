@@ -1,8 +1,8 @@
 package activity.bookview;
 
 
+import mockData.MockData;
 import hkust.comp4521.project.R;
-import MockBookViewList.MockBookViewList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,12 +35,12 @@ public class BookView_One extends Activity {
 		textView4 = (TextView) findViewById(R.id.bookid);
 		imageView = (ImageView) findViewById(R.id.icon);
 		
-		MockBookViewList mkbookviewlist = new MockBookViewList();
-		BookViewInfo info=mkbookviewlist.bookViewArray[1];
-		textView.setText(info.getOriginalText());
-		textView2.setText(info.getReviewText());
-		textView3.setText(info.getBookname());
-		textView4.setText(String.valueOf(info.getBookId()));
+
+		model.BookView info = MockData.BookView.sample1;
+		textView.setText(info.refText);
+		textView2.setText(info.content);
+		textView3.setText(MockData.Book.sample1.name);
+		textView4.setText(MockData.Book.sample1.ISBN);
 		//imageView.
     }
 }

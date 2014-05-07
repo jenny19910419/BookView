@@ -160,6 +160,15 @@ public class Data
 	}
 	
 	/**
+	 * adjust set the pointer of a Data
+	 * use it to make mock Data ONLY! DON'T use it on real data!
+	 * @param newPtr
+	 */
+	public void set_ptr(String newPtr) {
+		this._thisPtr = newPtr;
+	}
+	
+	/**
 	 * get the data from an array of data by its pointer
 	 * @param arr
 	 * @param ptr
