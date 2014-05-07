@@ -2,6 +2,8 @@ package activity.search;
 
 import java.util.ArrayList;
 
+import model.Book;
+import myUtil.Callable;
 import hkust.comp4521.project.R;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
@@ -10,9 +12,11 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 /*public class SearchActivity extends ListActivity {
 
@@ -51,7 +55,8 @@ import android.widget.SearchView;
 public class SearchActivity extends ListActivity {
 
 	private BookViewInfo[] searchResult;
-
+	Handler handler = new Handler();
+	Book[] booklist= null;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,6 +85,31 @@ public class SearchActivity extends ListActivity {
 	private void doMySearch(String query) {
 		// TODO Auto-generated method stub
         //test instance
+		//test instance
+				Book.server_search(query, new Callable() {
+
+					@Override
+					public void callback(Object d) {
+						booklist = (Book[])d;
+						handler.post(new Runnable() {
+
+							@Override
+							public void run() {
+								if(booklist.length<=0) {
+									Toast.makeText(getApplicationContext(), "nothing found", Toast.LENGTH_SHORT).show();
+									return;
+								}
+								
+								Toast.makeText(getApplicationContext(), booklist[0].name, Toast.LENGTH_SHORT).show();
+								
+							}
+							
+						});
+						
+					}
+					
+				});
+
 		BookViewInfo bookViewOne = new BookViewInfo("first org",
 				"first review", R.drawable.testpor1, 1, "bookOneName");
 		BookViewInfo bookViewTwo = new BookViewInfo("second org",
