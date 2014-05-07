@@ -16,6 +16,11 @@ public class Book extends Data
 	public String author = "";
 	public String ISBN = "";
 	
+	/**
+	 * search books with a string
+	 * @param query
+	 * @param callback
+	 */
 	public static void server_search(String query, final Callable callback) {
 		Server.post("Book/search", new String[]{query}, new Callable() {
 
@@ -29,6 +34,21 @@ public class Book extends Data
 				
 				Book[] rtn = Data.from_json_arr(Book.class, (JSONArray)d);
 				callback.callback(rtn);
+			}
+			
+		});
+	}
+	/**
+	 * list the book-views of this book
+	 * @param callback
+	 */
+	public void server_list_book_view(final Callable callback) {
+		Server.post("Book/list_book_view", new String[]{this.get_ptr()}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				BookView[] res = Data.from_json_arr(BookView.class, (JSONArray) d);
+				callback.callback(res);
 			}
 			
 		});
