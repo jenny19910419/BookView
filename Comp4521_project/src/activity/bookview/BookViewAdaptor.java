@@ -7,6 +7,7 @@ import model.Data;
 
 import hkust.comp4521.project.R;
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,12 +24,15 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 	private final Context context;
 	private final ArrayList<String> originalText;
 	private final ArrayList<String> reviewText;
-	private final ArrayList<Integer> portrait;
+	private final ArrayList<Drawable> portrait;
 	private final ArrayList<String> bookid;
 	private final ArrayList<String> bookname;
 
-
 	public BookViewAdaptor(Context context, model.BookView[] bookViewArr, model.Book[] relatedBookArr) {
+		this(context, bookViewArr, relatedBookArr, null);
+	}
+	
+	public BookViewAdaptor(Context context, model.BookView[] bookViewArr, model.Book[] relatedBookArr, model.User[] relatedUserArr) {
 		super(context, R.layout.fragment_bookview, bookViewArr);
 		
 		//extract information
@@ -36,7 +40,7 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 		
 		this.originalText = new ArrayList<String>();
 		this.reviewText = new ArrayList<String>();
-		this.portrait = new ArrayList<Integer>();
+		this.portrait = new ArrayList<Drawable>();
 		this.bookid = new ArrayList<String>();
 		this.bookname = new ArrayList<String>();
 		
@@ -44,17 +48,41 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 		
 		for(int i = 0; i < bookViewArr.length;++i) {
 			model.BookView bookView = bookViewArr[i];
+			
+			// related book
 			model.Book book = Data.get_data_from_array(relatedBookArr, bookView.bookPtr);
+			
+			// related user
+			
 			originalText.add(bookView.content);
 			reviewText.add(bookView.refText);
-			portrait.add(R.drawable.testpor1);
-			bookid.add(book.ISBN);
-			bookname.add(book.name);
+			
+			// get book name, book ISBN from related book
+			if(book != null) {
+				bookid.add(book.ISBN);
+				bookname.add(book.name);
+			}
+			else {
+				bookid.add("");
+				bookname.add("");
+			}
+			
+			// get user image from related user
+			if(relatedUserArr != null) {
+				model.User user = Data.get_data_from_array(relatedUserArr, bookView.authorPtr);
+				BitmapDrawable d = new BitmapDrawable(context.getResources(), user.get_image());
+				portrait.add(d);
+			}
+			else {
+				portrait.add(context.getResources().getDrawable(R.drawable.testpor1));
+			}
+			
+			
 		}
 		
 		
 	}
-
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
@@ -84,7 +112,7 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 		else{
 			textView3.setText(bookname.get(position));
 		}
-		imageView.setImageResource(portrait.get(position));
+		imageView.setImageDrawable(portrait.get(position));
 
 		return rowView;
 	}

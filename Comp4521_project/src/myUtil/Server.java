@@ -184,7 +184,7 @@ public class Server
 	}
 
 	public static void server_do_debug() {
-		Log.d(TAG, "doing debug work");
+		//Log.d(TAG, "doing debug work");
 		
 	}
 
