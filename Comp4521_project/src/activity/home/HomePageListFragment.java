@@ -32,10 +32,10 @@ public class HomePageListFragment extends ListFragment
 	
 	 @Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-	    BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
+		model.BookView item = (model.BookView) getListAdapter().getItem(position);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
 	    Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
-	     HomePageListFragment.this.startActivity(in);
+	    HomePageListFragment.this.startActivity(in);
 	 }
 
 }

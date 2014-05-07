@@ -35,7 +35,7 @@ public class PopPage  extends ListFragment {
 	}
 	
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		BookViewInfo item = (BookViewInfo) getListAdapter().getItem(position);
+		model.BookView item = (model.BookView) getListAdapter().getItem(position);
 		 Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
 	     PopPage.this.startActivity(in);
      }
