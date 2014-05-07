@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.Book;
 import myUtil.Callable;
 import hkust.comp4521.project.R;
+import activity.book.BookAdaptor;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
 import android.app.ListActivity;
@@ -54,9 +55,9 @@ import android.widget.Toast;
  */
 public class SearchActivity extends ListActivity {
 
-	private BookViewInfo[] searchResult;
+	//private BookViewInfo[] searchResult;
 	Handler handler = new Handler();
-	Book[] booklist= null;
+	private Book[] booklist;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,8 +68,8 @@ public class SearchActivity extends ListActivity {
 		handleIntent(getIntent());
 
 		// display the result
-		BookViewAdaptor adapter = new BookViewAdaptor(this, searchResult);
-		setListAdapter(adapter);
+		/*BookAdaptor adapter = new BookAdaptor(this, booklist);
+		setListAdapter(adapter);*/
 	}
 
 	private void handleIntent(Intent intent) {
@@ -99,7 +100,8 @@ public class SearchActivity extends ListActivity {
 									Toast.makeText(getApplicationContext(), "nothing found", Toast.LENGTH_SHORT).show();
 									return;
 								}
-								
+								BookAdaptor adapter = new BookAdaptor(SearchActivity.this, booklist);
+								setListAdapter(adapter);
 								Toast.makeText(getApplicationContext(), booklist[0].name, Toast.LENGTH_SHORT).show();
 								
 							}
@@ -110,13 +112,6 @@ public class SearchActivity extends ListActivity {
 					
 				});
 
-		BookViewInfo bookViewOne = new BookViewInfo("first org",
-				"first review", R.drawable.testpor1, 1, "bookOneName");
-		BookViewInfo bookViewTwo = new BookViewInfo("second org",
-				"second review", R.drawable.testpor2, 2, "BookTwoName");
-
-		BookViewInfo[] bookViewArray = { bookViewOne, bookViewTwo };
-		searchResult = bookViewArray;
 	}
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
