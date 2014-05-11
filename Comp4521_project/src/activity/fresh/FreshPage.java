@@ -30,55 +30,61 @@ public class FreshPage extends ListFragment implements Observer
 	private static final String TAG = "FreshPage";
 	private FreshPage_Ctrl ctrl = new FreshPage_Ctrl();
 	private Handler handler = new Handler();
-	
+
 	@Override
-	  public void onActivityCreated(Bundle savedInstanceState) {
-	    super.onActivityCreated(savedInstanceState);
-	    
-	    ctrl.addObserver(this);
-	    
-	    ctrl.refresh();
-	    
-	    
-	  }
-	
-	
-	 @Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		ctrl.addObserver(this);
+
+		ctrl.refresh();
+
+	}
+
+	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-	    model.BookView item = (model.BookView) getListAdapter().getItem(position);
-	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
-        
-	    Intent in = new Intent(getActivity().getApplicationContext(),BookView_One.class);
-	    FreshPage.this.startActivity(in);
-         
-	 }
-	
-	
+		model.BookView item = (model.BookView) getListAdapter().getItem(position);
 
+		Intent in = new Intent(getActivity().getApplicationContext(), BookView_One.class);
+		FreshPage.this.startActivity(in);
 
+	}
+
+	/**
+	 * the function to handle controller change. it simply calls update_sync in the main UI thread.
+	 */
 	@Override
-	public void update(Observable observable,final Object state) {
-		handler.post(new Runnable() {
+	public void update(Observable observable, final Object state) {
+		handler.post(new Runnable()
+		{
 
 			@Override
 			public void run() {
 				FreshPage.this.update_sync(state);
 			}
-			
+
 		});
 	}
-	
+	/**
+	 * the function to handle controller change. it will change the UI, so this function should only be called in the main UI thread.
+	 * @param state
+	 */
 	public void update_sync(Object state) {
-		switch((Integer) state) {
+		switch ((Integer) state)
+		{
+		// when loading data from server, display a message
 		case FreshPage_Ctrl.State.loading:
-			ArrayAdapter simpleAdapter = new ArrayAdapter(getActivity(),R.layout.text,new String[]{"loading..."});
+			ArrayAdapter simpleAdapter = new ArrayAdapter<String>(getActivity(), R.layout.text, new String[]
+				{ "loading..." });
 			this.setListAdapter(simpleAdapter);
 			break;
+		// when loading complete, display the fresh information
 		case FreshPage_Ctrl.State.ready:
-			BookViewAdaptor adapter = new BookViewAdaptor(getActivity(),
-		    		this.ctrl.bookViewArr, this.ctrl.relatedBookArr, this.ctrl.relatedUserArr);
-		
-		    setListAdapter(adapter);
+			BookViewAdaptor adapter = new BookViewAdaptor(getActivity(), this.ctrl.bookViewArr,
+					this.ctrl.relatedBookArr, this.ctrl.relatedUserArr);
+
+			setListAdapter(adapter);
+			break;
 		}
 	}
 
