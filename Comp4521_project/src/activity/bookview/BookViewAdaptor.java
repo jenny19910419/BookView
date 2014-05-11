@@ -48,14 +48,12 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 		
 		for(int i = 0; i < bookViewArr.length;++i) {
 			model.BookView bookView = bookViewArr[i];
+			originalText.add(bookView.content);
+			reviewText.add(bookView.refText);
 			
 			// related book
 			model.Book book = Data.get_data_from_array(relatedBookArr, bookView.bookPtr);
 			
-			// related user
-			
-			originalText.add(bookView.content);
-			reviewText.add(bookView.refText);
 			
 			// get book name, book ISBN from related book
 			if(book != null) {
@@ -89,29 +87,13 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.fragment_bookview, parent,
 				false);
-		TextView textView = (TextView) rowView.findViewById(R.id.firstLine);
 		TextView textView2 = (TextView) rowView.findViewById(R.id.secondLine);
 		TextView textView3 = (TextView) rowView.findViewById(R.id.bookname);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		
-		if(originalText.get(position).length()>15){
-		    textView.setText(originalText.get(position).substring(0, 15));
-		}
-		else{
-			textView.setText(originalText.get(position));
-		}
-		if(reviewText.get(position).length()>15){
-		    textView2.setText(reviewText.get(position).substring(0, 15));
-		}
-		else{
-			textView2.setText(reviewText.get(position));
-		}
-		if(bookname.get(position).length()>20){
-		    textView3.setText(bookname.get(position).substring(0, 20));
-		}
-		else{
-			textView3.setText(bookname.get(position));
-		}
+		textView2.setText(originalText.get(position));
+		textView3.setText(bookname.get(position));
+
 		imageView.setImageDrawable(portrait.get(position));
 
 		return rowView;
