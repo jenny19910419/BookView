@@ -11,7 +11,7 @@ import myUtil.Server;
 
 public class BookView extends Data
 {
-	public static final String TAG = "Data";
+	public static final String TAG = "BookView";
 	public String authorPtr = "";
 	public String bookPtr = "";
 	public String refText = "";
@@ -111,11 +111,6 @@ public class BookView extends Data
 
 			@Override
 			public void callback(Object d) {
-				if(! (d instanceof JSONArray)) {
-					Log.e(TAG, "list_comment returns a non-array object");
-					callback.callback(null);
-					return;
-				}
 				
 				
 				JSONObject res = (JSONObject)d;

@@ -134,6 +134,43 @@ public class User extends Data
 		});
 	}
 	/**
+	 * let the active user unfollow another user
+	 * @param userPtr the target user pointer
+	 * @param callback 
+	 */
+	public static void server_remove_following(String userPtr, final Callable callback) {
+		Server.post("User/remove_following", new String[]{userPtr}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				if(d == null) {
+					Log.d(TAG, "remove_following fails");
+					callback.callback(null);
+					return;
+				}
+				
+				callback.callback(Data.from_json((JSONObject) d));
+			}
+			
+		});
+	}
+	public static void server_exists(String userPtr, final Callable callback) {
+		Server.post("User/exists", new String[]{userPtr}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				if(d == null) {
+					Log.d(TAG, "exists fails");
+					callback.callback(null);
+					return;
+				}
+				
+				callback.callback(Data.from_json((JSONObject) d));
+			}
+			
+		});
+	}
+	/**
 	 * get the current active user
 	 * @return active user
 	 */
