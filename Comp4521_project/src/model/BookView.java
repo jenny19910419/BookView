@@ -41,11 +41,14 @@ public class BookView extends Data
 				try {
 					JSONObject bookViewJson = res.getJSONObject("bookView");
 					JSONObject relatedUserJson = res.getJSONObject("relatedUser");
+					JSONObject relatedBookJson = res.getJSONObject("relatedBook");
 					BookView bookView = (BookView)Data.from_json(bookViewJson);
 					User relatedUser = (User)Data.from_json(relatedUserJson);
+					Book relatedBook = (Book)Data.from_json(relatedBookJson);
 					GetResult rtn = new GetResult();
 					rtn.bookView = bookView;
 					rtn.relatedUser = relatedUser;
+					rtn.relatedBook = relatedBook;
 					callback.callback(rtn);
 					return;
 				} catch (JSONException e) {
@@ -61,6 +64,7 @@ public class BookView extends Data
 	public static class GetResult {
 		public BookView bookView;
 		public User relatedUser;
+		public Book relatedBook;
 	}
 	/**
 	 * upload the change of this book-view.
