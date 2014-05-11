@@ -77,12 +77,13 @@ public class BookView extends Data
 			
 		});
 	}
+	
 	/**
 	 * list the comment of this book-view
 	 * @param callback
 	 * 
 	 * callback
-	 * @param {BookView_Comment[]}
+	 * @param {ListCommentResult}
 	 */
 	public void server_list_comment(final Callable callback) {
 		Server.post("BookView/list_comment", new String[]{this.get_ptr()}, new Callable() {
@@ -92,20 +93,34 @@ public class BookView extends Data
 				if(! (d instanceof JSONArray)) {
 					Log.e(TAG, "list_comment returns a non-array object");
 					callback.callback(null);
+					return;
 				}
 				
-				JSONArray arr = (JSONArray)d;
-				BookView_Comment[] rtn = new BookView_Comment[arr.length()];
-				for(int i=0;i<arr.length();i++) {
-					try {
-						rtn[i] = (BookView_Comment)Data.from_json((JSONObject)arr.get(i));
-					} catch (JSONException e) {
-						rtn[i] = null;
-					}
+				
+				JSONObject res = (JSONObject)d;
+				JSONArray commentJsonArr = null;
+				JSONArray relatedUserJsonArr = null;
+				try {
+					commentJsonArr = res.getJSONArray("commentArr");
+					relatedUserJsonArr = res.getJSONArray("relatedUserArr");
+				} catch (JSONException e) {
+					Log.e(TAG, "list_comment bad response");
+					callback.callback(null);
+					return;
 				}
+				
+				ListCommentResult rtn = new ListCommentResult();
+				rtn.commentArr = Data.from_json_arr(BookView_Comment.class, commentJsonArr);
+				rtn.relatedUserArr = Data.from_json_arr(User.class, relatedUserJsonArr);
 				callback.callback(rtn);
+				
+				
 			}
 			
 		});
+	}
+	public static class ListCommentResult {
+		public BookView_Comment[] commentArr;
+		public User[] relatedUserArr;
 	}
 }
