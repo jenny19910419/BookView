@@ -25,7 +25,7 @@ public class BookView extends Data
 	 * @param callback 
 	 * 
 	 * callback
-	 * @param {BookView}
+	 * @param {GetResult}
 	 */
 	public static void server_get(String ptr, final Callable callback) {
 		Server.post("BookView/get", new String[]{ptr}, new Callable() {
@@ -37,13 +37,30 @@ public class BookView extends Data
 					callback.callback(null);
 					return;
 				}
-				BookView rtn = (BookView)Data.from_json((JSONObject)d);
-				
-				callback.callback(rtn);
+				JSONObject res = (JSONObject) d;
+				try {
+					JSONObject bookViewJson = res.getJSONObject("bookView");
+					JSONObject relatedUserJson = res.getJSONObject("relatedUser");
+					BookView bookView = (BookView)Data.from_json(bookViewJson);
+					User relatedUser = (User)Data.from_json(relatedUserJson);
+					GetResult rtn = new GetResult();
+					rtn.bookView = bookView;
+					rtn.relatedUser = relatedUser;
+					callback.callback(rtn);
+					return;
+				} catch (JSONException e) {
+					Log.e(TAG, "server_get bad response");
+					callback.callback(null);
+					return;
+				}
 				
 			}
 			
 		});
+	}
+	public static class GetResult {
+		public BookView bookView;
+		public User relatedUser;
 	}
 	/**
 	 * upload the change of this book-view.
