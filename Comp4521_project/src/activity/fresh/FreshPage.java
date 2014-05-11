@@ -46,6 +46,7 @@ public class FreshPage extends ListFragment implements Observer
 		model.BookView item = (model.BookView) getListAdapter().getItem(position);
 
 		Intent in = new Intent(getActivity().getApplicationContext(), BookView_One.class);
+		in.putExtra("bookViewPtr", item.get_ptr());
 		FreshPage.this.startActivity(in);
 
 	}
