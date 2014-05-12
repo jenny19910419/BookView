@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#17df0d" >
-     
-    <TextView android:layout_width="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/followingButton"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Design Social Screen"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-     
- 
-</RelativeLayout>
+        android:text="Following BookBuddies" />
+    
+    <Button
+        android:id="@+id/toFollowButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Add BookBuddy by Email" />
+
+</LinearLayout>

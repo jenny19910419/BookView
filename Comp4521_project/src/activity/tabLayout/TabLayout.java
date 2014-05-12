@@ -7,6 +7,7 @@ import activity.bookview.BookView_One;
 import activity.fresh.FreshPage;
 import activity.search.Search;
 import activity.setting.Setting;
+import activity.social.ListBookBuddyActivity;
 import activity.social.Social;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -165,7 +166,8 @@ public class TabLayout extends FragmentActivity implements
 			//new Search();
 			return true;
 		case R.id.action_circle:
-			new Social();
+			Intent intent = new Intent(this, Social.class);
+			this.startActivity(intent);
 			return true;
 		case R.id.action_settings:
 			Intent in = new Intent(this, Setting.class);

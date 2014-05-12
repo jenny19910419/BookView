@@ -51,7 +51,7 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 			originalText.add(bookView.content);
 			reviewText.add(bookView.refText);
 			
-			// related book
+			//related book
 			model.Book book = Data.get_data_from_array(relatedBookArr, bookView.bookPtr);
 			
 			
