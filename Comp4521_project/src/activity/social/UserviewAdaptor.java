@@ -4,13 +4,17 @@ import hkust.comp4521.project.R;
 
 import java.util.ArrayList;
 
+import activity.bookview.BookView_One;
+import activity.fresh.FreshPage;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import mockData.MockData;
 import model.User;
 import myUtil.Callable;
+import android.os.Handler;
 import android.provider.ContactsContract.Contacts.Data;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -33,7 +37,8 @@ public class UserviewAdaptor extends ArrayAdapter<User> {
 	//private final ArrayList<String> imgURL;
 	private final ArrayList<Drawable> portrait;
 	//private final User user;
-	private User[] following; //used for rest
+	private User[] following;
+	Handler handler = new Handler();
 	
 
 
@@ -65,7 +70,7 @@ public class UserviewAdaptor extends ArrayAdapter<User> {
 		
 		//Test with mock data
 		
-		following = MockData.User.sampleArr;
+		//following = MockData.User.sampleArr;
 		following = relatedUserArr;
 		
 		
@@ -124,6 +129,7 @@ public class UserviewAdaptor extends ArrayAdapter<User> {
 		});*/
 		
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.editFollowingImage);
+		//here to add listener to go to homepage of other users
 		TextView emailName = (TextView) rowView.findViewById(R.id.editFollowinggEmailName);
 		Button deleteButton = (Button) rowView.findViewById(R.id.edutFollowingDeleteButton);
 		deleteButton.setOnClickListener(new OnClickListener() {
@@ -131,7 +137,26 @@ public class UserviewAdaptor extends ArrayAdapter<User> {
 		    @Override
 		    public void onClick(View v) {
 		       //delete the user from the server
+		    	User.server_remove_following(following[position].get_ptr(), new Callable() {
+
+		    		 @Override
+						public void callback(final Object d) {
+							handler.post(new Runnable() {
+
+								@Override
+								public void run() {
+									User user = (User) d;
+									Toast.makeText(context, "Successful delete the following " +user.name, Toast.LENGTH_SHORT).show();
+									
+								}
+								
+							});
+						}
 		    	
+		    	});
+		    	
+		    	//refresh the GUI
+		    	followButton.setText("Follow  " + username.get(position));
 		    	
 		    }
 		});
@@ -141,7 +166,7 @@ public class UserviewAdaptor extends ArrayAdapter<User> {
 		emailName.setText(email.get(position));
 		//userName.setText(username.get(position));
 		imageView.setImageDrawable(portrait.get(position));
-		followButton.setText("following " + username.get(position));
+		followButton.setText("Following " + username.get(position));
 		
 	
 		

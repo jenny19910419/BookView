@@ -76,7 +76,7 @@ public class ListBookBuddyActivity extends ListActivity implements Observer {
 			
 			UserviewAdaptor adapter = new UserviewAdaptor(this,this.ctrl.relatedUserArr);
 			setListAdapter(adapter);
-			Toast.makeText(this,"finish setting useview Adaptor syn refresh", Toast.LENGTH_LONG).show();
+			//Toast.makeText(this,"finish setting useview Adaptor syn refresh", Toast.LENGTH_LONG).show();
 			break;
 		}
 	}
