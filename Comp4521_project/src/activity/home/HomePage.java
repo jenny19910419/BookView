@@ -21,14 +21,17 @@ public class HomePage extends Fragment {
             Bundle savedInstanceState) {
     	View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
     	
-    	//ImageView portrait = (ImageView) getView().findViewById(R.id.homepage_icon);
+    	ImageView portrait = (ImageView) rootView.findViewById(R.id.homepage_icon);
     	//BitmapDrawable d = new BitmapDrawable(User.get_active_user().imageUrl);
     	//portrait.setImageDrawable(d);
+    	BitmapDrawable d = new BitmapDrawable(getResources(),User.get_active_user().get_image());
+    	portrait.setImageDrawable(d);
     	
-    	//EditText email = (EditText) getView().findViewById(R.id.homepage_email);
-    	//email.setText(User.get_active_user().email);
-		//EditText username = (EditText) getView().findViewById(R.id.homepage_username);
-		//username.setText(User.get_active_user().name);
+    	
+    	TextView email = (TextView) rootView.findViewById(R.id.homepage_email);
+    	email.setText(User.get_active_user().email );
+    	TextView username = (TextView) rootView.findViewById(R.id.homepage_username);
+    	username.setText(User.get_active_user().name);
 
         return rootView;
     }

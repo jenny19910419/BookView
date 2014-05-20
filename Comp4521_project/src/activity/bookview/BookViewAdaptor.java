@@ -69,6 +69,7 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 			if(relatedUserArr != null) {
 				model.User user = Data.get_data_from_array(relatedUserArr, bookView.authorPtr);
 				BitmapDrawable d = new BitmapDrawable(context.getResources(), user.get_image());
+
 				portrait.add(d);
 			}
 			else {
