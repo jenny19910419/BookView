@@ -17,13 +17,14 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
-            android:text="Portrait" />
+            android:text="Portrait"
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/portraitImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
             android:layout_weight="2"
             android:src="@drawable/testpor1" />
 
@@ -38,10 +39,11 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
-            android:text="loginEmail" />
+            android:text="loginEmail"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/settingLoginEmail"
@@ -49,7 +51,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="YourloginEmail" />
+            android:text="YourloginEmail"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -63,10 +66,11 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
-            android:text="Username" />
+            android:text="Username"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/settingUsername"
@@ -87,10 +91,11 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="left|center_horizontal"
-            android:text="Password" />
+            android:text="Password"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/settingPassword"

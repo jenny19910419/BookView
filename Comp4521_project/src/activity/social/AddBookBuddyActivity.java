@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddBookBuddyActivity extends Activity {
 	
@@ -17,10 +18,11 @@ public class AddBookBuddyActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addfollowingview);
 		
-		EditText email = (EditText) findViewById(R.id.editFollowinggEmailName);
-		Button searchButton = (Button) findViewById(R.id.editFollowingButton);
+		//EditText email = (EditText) findViewById(R.id.editFollowinggEmailName);
+		//Button searchButton = (Button) findViewById(R.id.editFollowingButton);
+		//Toast.makeText(getApplicationContext(), searchButton = null, Toast.LENGTH_LONG);
 		
-		searchButton.setOnClickListener(new OnClickListener() {
+		/*searchButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -29,7 +31,7 @@ public class AddBookBuddyActivity extends Activity {
 				
 			}
 			
-		});
+		});*/
 		
 		
 	}
