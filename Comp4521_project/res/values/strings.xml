@@ -10,6 +10,7 @@
     <string name="title_activity_whole_page">WholePage</string>
     <string name="action_search">Search</string>
     <string name="action_circle">Circle</string>
+    <string name="action_compose">Compose</string>
     <string name="title_activity_new">NewActivity</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_interesting">InterestingActivity</string>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import hkust.comp4521.project.R;
 import activity.bookview.BookView_One;
+import activity.compose.Compose;
 import activity.fresh.FreshPage;
 import activity.search.Search;
 import activity.setting.Setting;
@@ -170,9 +171,16 @@ public class TabLayout extends FragmentActivity implements
 			this.startActivity(intent);
 			return true;
 		case R.id.action_settings:
-			Intent in = new Intent(this, Setting.class);
-		    this.startActivity(in);
+			Intent intent1 = new Intent(this, Setting.class);
+		    this.startActivity(intent1);
 			return true;
+			
+		case R.id.action_compose:
+			Intent intent2 = new Intent(this, Compose.class);
+			this.startActivity(intent2);
+			return true;
+			
+		
 			
 		default:
 			return super.onOptionsItemSelected(item);
