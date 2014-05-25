@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
+import model.BookView.ListCommentResult;
 import myUtil.Callable;
 import myUtil.Server;
 
@@ -41,16 +42,37 @@ public class Book extends Data
 	/**
 	 * list the book-views of this book
 	 * @param callback
+	 * 
+	 * callback
+	 * @param {ListCommentResult}
 	 */
 	public void server_list_book_view(final Callable callback) {
 		Server.post("Book/list_book_view", new String[]{this.get_ptr()}, new Callable() {
 
 			@Override
 			public void callback(Object d) {
-				BookView[] res = Data.from_json_arr(BookView.class, (JSONArray) d);
-				callback.callback(res);
+				JSONObject res = (JSONObject)d;
+				JSONArray bookViewJsonArr = null;
+				JSONArray relatedUserJsonArr = null;
+				try {
+					bookViewJsonArr = res.getJSONArray("bookViewArr");
+					relatedUserJsonArr = res.getJSONArray("relatedUserArr");
+				} catch (JSONException e) {
+					Log.e(TAG, "list_book_view bad response");
+					callback.callback(null);
+					return;
+				}
+				
+				ListBookViewResult rtn = new ListBookViewResult();
+				rtn.bookViewArr = Data.from_json_arr(BookView.class, bookViewJsonArr);
+				rtn.relatedUserArr = Data.from_json_arr(User.class, relatedUserJsonArr);
+				callback.callback(rtn);
 			}
 			
 		});
+	}
+	public static class ListBookViewResult {
+		public BookView[] bookViewArr;
+		public User[] relatedUserArr;
 	}
 }
