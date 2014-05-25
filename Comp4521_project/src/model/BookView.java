@@ -68,9 +68,6 @@ public class BookView extends Data
 	}
 	/**
 	 * upload the change of this book-view.
-	 * @param bookPtr the pointer of book
-	 * @param refText the text referenced in the book, filled by user
-	 * @param content the content of the book-view
 	 * @param callback
 	 * 
 	 * callback
@@ -90,6 +87,7 @@ public class BookView extends Data
 				else {
 					that._thisPtr = rtn.get_ptr();
 					that.createTime = rtn.createTime;
+					that.authorPtr = rtn.authorPtr;
 					callback.callback(this);
 				}
 				
