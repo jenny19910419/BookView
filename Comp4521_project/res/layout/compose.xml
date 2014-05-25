@@ -9,24 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/ComposeBookNameTextView"
-            android:layout_width="100dp"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="Book Name"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/composeBookNameTextEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10" >
-
-            <requestFocus />
-        </EditText>
-
     </LinearLayout>
 
     <LinearLayout

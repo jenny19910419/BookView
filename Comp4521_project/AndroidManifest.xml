@@ -74,6 +74,11 @@
             android:parentActivityName="activity.tabLayout.TabLayout">
         </activity>
         <activity 
+            android:name="activity.bookcomment.bookcomment"
+            android:label="@string/app_name"
+            android:parentActivityName="activity.search.SearchActivity">
+        </activity>
+        <activity 
             android:name="activity.social.ListBookBuddyActivity"
             android:label="@string/app_name"
             android:parentActivityName="activity.social.Social">

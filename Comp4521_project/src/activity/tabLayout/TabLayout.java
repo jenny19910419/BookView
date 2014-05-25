@@ -175,10 +175,10 @@ public class TabLayout extends FragmentActivity implements
 		    this.startActivity(intent1);
 			return true;
 			
-		case R.id.action_compose:
+		/*case R.id.action_compose:
 			Intent intent2 = new Intent(this, Compose.class);
 			this.startActivity(intent2);
-			return true;
+			return true;*/
 			
 		
 			

@@ -6,8 +6,10 @@ import model.Book;
 import myUtil.Callable;
 import hkust.comp4521.project.R;
 import activity.book.BookAdaptor;
+import activity.bookcomment.bookcomment;
 import activity.bookview.BookViewAdaptor;
 import activity.bookview.BookViewInfo;
+import activity.compose.Compose;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -116,6 +118,11 @@ public class SearchActivity extends ListActivity {
 
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		// call detail activity for clicked entry
+		model.Book item = (model.Book)getListAdapter().getItem(position);
+		
+		Intent intent = new Intent(this, bookcomment.class);
+		intent.putExtra("book", item);
+		this.startActivity(intent);
 	}
 	
 	/*
