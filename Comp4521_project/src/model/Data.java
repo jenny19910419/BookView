@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -10,7 +11,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class Data
+public class Data implements Serializable
 {
 	private static final String TAG = "Data ";
 	protected String _thisPtr = "";
