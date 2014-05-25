@@ -232,6 +232,44 @@ public class User extends Data
 		public User[] relatedUserArr; // the users related in fresh book-views and fresh comments
 		
 	}
+	public static void server_get_home(final Callable callback) {
+		Server.post("User/get_home", new String[]{}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				JSONObject res = (JSONObject)d;
+				JSONArray bookViewJsonArr = null;
+				JSONArray relatedBookJsonArr = null;
+				JSONArray relatedUserJsonArr = null;
+				try {
+					bookViewJsonArr = res.getJSONArray("bookViewArr");
+					
+					relatedBookJsonArr = res.getJSONArray("relatedBookArr");
+					relatedUserJsonArr = res.getJSONArray("relatedUserArr");
+				} catch (JSONException e) {
+					Log.e(TAG, "get_home bad response");
+					callback.callback(null);
+					return;
+				}
+				
+				GetFreshResult rtn = new GetFreshResult();
+				rtn.bookViewArr = Data.from_json_arr(BookView.class, bookViewJsonArr);
+				rtn.relatedBookArr = Data.from_json_arr(Book.class, relatedBookJsonArr);
+				rtn.relatedUserArr = Data.from_json_arr(User.class, relatedUserJsonArr);
+				
+				callback.callback(rtn);
+				
+			}
+			
+		});
+	}
+	public static class GetHomeResult
+	{
+		public BookView[] bookViewArr; 
+		public Book[] relatedBookArr; 
+		public User[] relatedUserArr; 
+		
+	}
 	/**
 	 * edit the active user
 	 * @param name
