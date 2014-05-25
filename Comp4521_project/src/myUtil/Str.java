@@ -78,6 +78,11 @@ public class Str
 	}
 	
 	public static Bitmap data_url_2_img(String dataUrl) {
+		if(dataUrl == null || dataUrl.length()<=0) {
+
+			Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+			return Bitmap.createBitmap(32, 32, conf); // this creates a MUTABLE bitmap
+		}
 		String encodingPrefix = "base64,";
 		int contentStartIndex = dataUrl.indexOf(encodingPrefix) + encodingPrefix.length();
 		byte[] imageData = Base64.decode(dataUrl.substring(contentStartIndex), Base64.DEFAULT);

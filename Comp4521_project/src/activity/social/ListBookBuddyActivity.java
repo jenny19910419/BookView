@@ -74,7 +74,7 @@ public class ListBookBuddyActivity extends ListActivity implements Observer {
 		// when loading complete, display the fresh information
 		case ListBookBuddy_Ctrl.State.ready:
 			
-			UserviewAdaptor adapter = new UserviewAdaptor(this,this.ctrl.relatedUserArr);
+			UserviewAdaptor adapter = new UserviewAdaptor(this, this.ctrl.followingArr);
 			setListAdapter(adapter);
 			//Toast.makeText(this,"finish setting useview Adaptor syn refresh", Toast.LENGTH_LONG).show();
 			break;

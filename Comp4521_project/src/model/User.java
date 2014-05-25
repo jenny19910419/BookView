@@ -99,6 +99,7 @@ public class User extends Data
 				}
 				
 				JSONArray arr = (JSONArray)d;
+				
 				User[] rtn = new User[arr.length()];
 				for(int i=0;i<arr.length();i++) {
 					try {

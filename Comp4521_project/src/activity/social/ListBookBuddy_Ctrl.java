@@ -5,6 +5,7 @@ import java.util.Observable;
 import model.User;
 import myUtil.Callable;
 import activity.fresh.FreshPage_Ctrl;
+import android.util.Log;
 
 public class ListBookBuddy_Ctrl extends Observable{
 
@@ -14,7 +15,7 @@ public class ListBookBuddy_Ctrl extends Observable{
 		public final static int ready = 2;
 	}
 	
-	public model.User[] relatedUserArr = null;
+	public model.User[] followingArr;
 	
 	public ListBookBuddy_Ctrl() {
 		
@@ -23,16 +24,20 @@ public class ListBookBuddy_Ctrl extends Observable{
 	public void refresh() {
 		this.setChanged();
 		this.notifyObservers(ListBookBuddy_Ctrl.State.loading);
-		
-		User.server_get_fresh(5, 0, new Callable() {
+		User.server_list_following(new Callable() {
 
 			@Override
 			public void callback(Object d) {
-				User.GetFreshResult res = (User.GetFreshResult)d;
-				ListBookBuddy_Ctrl.this.relatedUserArr = res.relatedUserArr;
 				
-				ListBookBuddy_Ctrl.this.setChanged();
-				ListBookBuddy_Ctrl.this.notifyObservers(ListBookBuddy_Ctrl.State.ready);
+				
+				
+				// TODO Auto-generated method stub
+				followingArr = (User[]) d;
+				
+				
+				setChanged();
+				notifyObservers(ListBookBuddy_Ctrl.State.ready);
+
 			}
 			
 		});

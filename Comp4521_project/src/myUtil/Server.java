@@ -72,6 +72,7 @@ public class Server
 			e.printStackTrace();
 			return null;
 		}
+		Log.i(TAG, "url: " + request);
 		HttpURLConnection connection = null;
 		try {
 			connection = (HttpURLConnection) url.openConnection();
@@ -99,6 +100,7 @@ public class Server
 		try {
 			wr = new DataOutputStream(connection.getOutputStream());
 			wr.writeBytes(urlParameters);
+			Log.i(TAG, "url paramaters: " + urlParameters);
 			wr.flush();
 			wr.close();
 		} catch (IOException e1) {
