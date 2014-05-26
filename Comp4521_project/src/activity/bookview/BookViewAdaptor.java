@@ -48,8 +48,8 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 		
 		for(int i = 0; i < bookViewArr.length;++i) {
 			model.BookView bookView = bookViewArr[i];
-			originalText.add(bookView.content);
-			reviewText.add(bookView.refText);
+			originalText.add(bookView.refText);
+			reviewText.add(bookView.content);
 			
 			//related book
 			model.Book book = Data.get_data_from_array(relatedBookArr, bookView.bookPtr);
@@ -88,11 +88,13 @@ public class BookViewAdaptor extends ArrayAdapter<model.BookView> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.fragment_bookview, parent,
 				false);
+		TextView textView1 = (TextView) rowView.findViewById(R.id.firstLine);
 		TextView textView2 = (TextView) rowView.findViewById(R.id.secondLine);
 		TextView textView3 = (TextView) rowView.findViewById(R.id.bookname);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		
-		textView2.setText(originalText.get(position));
+		textView1.setText(originalText.get(position));
+		textView2.setText(reviewText.get(position));
 		textView3.setText(bookname.get(position));
 
 		imageView.setImageDrawable(portrait.get(position));
