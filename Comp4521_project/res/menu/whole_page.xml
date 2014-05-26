@@ -11,10 +11,6 @@
           android:icon="@drawable/ic_action_circle"
           android:showAsAction="always"/>
      
-     <item android:id="@+id/action_compose"
-          android:title="@string/action_compose"
-          android:icon="@drawable/ic_action_compose"
-          android:showAsAction="always"/>
     
      <item
         android:id="@+id/action_settings"
