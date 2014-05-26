@@ -270,6 +270,37 @@ public class User extends Data
 		public User[] relatedUserArr; 
 		
 	}
+	public static void server_get_pop(final Callable callback) {
+		Server.post("User/get_pop", new String[]{}, new Callable() {
+
+			@Override
+			public void callback(Object d) {
+				JSONObject res = (JSONObject)d;
+				JSONArray bookViewJsonArr = null;
+				JSONArray relatedBookJsonArr = null;
+				JSONArray relatedUserJsonArr = null;
+				try {
+					bookViewJsonArr = res.getJSONArray("bookViewArr");
+					
+					relatedBookJsonArr = res.getJSONArray("relatedBookArr");
+					relatedUserJsonArr = res.getJSONArray("relatedUserArr");
+				} catch (JSONException e) {
+					Log.e(TAG, "get_pop bad response");
+					callback.callback(null);
+					return;
+				}
+				
+				GetFreshResult rtn = new GetFreshResult();
+				rtn.bookViewArr = Data.from_json_arr(BookView.class, bookViewJsonArr);
+				rtn.relatedBookArr = Data.from_json_arr(Book.class, relatedBookJsonArr);
+				rtn.relatedUserArr = Data.from_json_arr(User.class, relatedUserJsonArr);
+				
+				callback.callback(rtn);
+				
+			}
+			
+		});
+	}
 	/**
 	 * edit the active user
 	 * @param name
