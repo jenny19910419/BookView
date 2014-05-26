@@ -31,6 +31,7 @@ public class MainActivity extends Activity implements Observer
 	private EditText passwordInput = null;
 	private MainActivityController controller = new MainActivityController();
 	private Handler handler = new Handler();
+	public boolean loginResult = false; // for junit test
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,11 +86,13 @@ public class MainActivity extends Activity implements Observer
 	private void update_sync(Object data) {
 		switch((Integer) data) {
 		case MainActivityController.STATE_LOGIN_SUCCESS:
+			this.loginResult = true;
 			Toast.makeText(this, "Welcome, " + User.get_active_user().email, Toast.LENGTH_SHORT).show();
 			Intent in = new Intent(this, TabLayout.class);
 			this.startActivity(in);
 			break;
 		case MainActivityController.STATE_LOGIN_FAIL:
+			this.loginResult = false;
 			Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
 			break;
 		}
