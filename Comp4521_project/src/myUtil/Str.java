@@ -63,7 +63,8 @@ public class Str
 		String result = null;
 
 		try {
-			result = URLEncoder.encode(s, "UTF-8").replaceAll("\\+", "%20")
+			result = URLEncoder.encode(s, "UTF-8").replaceAll("\\%0A", "\\\\n")
+					.replaceAll("\\+", "%20")
 					.replaceAll("\\%21", "!").replaceAll("\\%27", "'")
 					.replaceAll("\\%28", "(").replaceAll("\\%29", ")")
 					.replaceAll("\\%7E", "~");
