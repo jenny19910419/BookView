@@ -37,8 +37,14 @@ public class FreshPage extends ListFragment implements Observer
 
 		ctrl.addObserver(this);
 
-		ctrl.refresh();
 
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		
+		ctrl.refresh();
 	}
 
 	@Override
@@ -88,5 +94,9 @@ public class FreshPage extends ListFragment implements Observer
 			break;
 		}
 	}
+
+
+
+	
 
 }
