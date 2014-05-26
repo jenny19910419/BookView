@@ -3,8 +3,11 @@ package activity.compose;
 import model.User;
 import myUtil.Callable;
 import hkust.comp4521.project.R;
+import activity.bookcomment.bookcomment;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -44,6 +47,8 @@ public class Compose extends Activity{
 					public void callback(Object d) {
 						// TODO Auto-generated method stub
 						//Toast.makeText(getApplicationContext(), "compose successful!", Toast.LENGTH_SHORT).show();
+						//Intent in = new Intent(getApplicationContext(),bookcomment.class);
+						Compose.this.finish();
 					}
 					
 				});
