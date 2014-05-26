@@ -30,7 +30,7 @@ public class TestAdapter extends ArrayAdapter{
 		View rowView = inflater.inflate(R.layout.fragment_bookview, parent,
 				false);
 		TextView textView = (TextView) rowView.findViewById(R.id.firstLine);
-		TextView textView2 = (TextView) rowView.findViewById(R.id.secondLine);
+		TextView textView2 = (TextView) rowView.findViewById(R.id.Bottom);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		textView.setText(values[position]);
 		textView2.setText(reviewText[position]);

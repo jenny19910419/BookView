@@ -44,7 +44,7 @@ public class BookView_One extends Activity implements Observer
 		setContentView(R.layout.fragment_bookview_total);
 
 		refTextDom = (TextView) findViewById(R.id.firstLine);
-		contentDom = (TextView) findViewById(R.id.secondLine);
+		contentDom = (TextView) findViewById(R.id.Bottom);
 		bookNameDom = (TextView) findViewById(R.id.bookname);
 		bookIdDom = (TextView) findViewById(R.id.bookid);
 		imageDom = (ImageView) findViewById(R.id.icon);
