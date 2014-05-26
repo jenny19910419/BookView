@@ -57,22 +57,10 @@ public class UserviewAdaptor extends ArrayAdapter<User> {
 		this.portrait = new ArrayList<Drawable>();
 		//Toast.makeText(getContext(),"constructor of Userview Adaptor", Toast.LENGTH_LONG).show();
 		
-		User.server_list_following(new Callable() {
-
-			@Override
-			public void callback(Object d) {
-				// TODO Auto-generated method stub
-				following = (User[]) d;
-				
-			}
-			
-		});
 		
 		//Test with mock data
 		
-		//following = MockData.User.sampleArr;
-		
-		//following = relatedUserArr;
+		following = relatedUserArr;
 		
 		
 		
