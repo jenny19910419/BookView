@@ -50,6 +50,8 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="5dp"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="origninalText"
                 android:textColor="#0099FF"
                 android:textSize="15sp" />
@@ -68,6 +70,8 @@
                 android:layout_height="fill_parent"
                 android:padding="5dp"
                 android:paddingTop="5dp"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="reviewText"
                 android:textSize="15sp" />
 
